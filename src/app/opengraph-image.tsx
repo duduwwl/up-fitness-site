@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import { ImageResponse } from "next/og";
 import { weekdayHoursText } from "@/lib/hours";
 
@@ -42,3 +43,4 @@ export default function OpenGraphImage() {
     size,
   );
 }
+
