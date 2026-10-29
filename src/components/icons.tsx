@@ -2,7 +2,7 @@
 export function ArrowIcon() {
   return (
     <svg className="arrow-icon" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-      <path d="M2 10 10 2M4 2h6v6" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M2 10 10 2M4 2h6v6" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -30,3 +30,4 @@ export function Logo() {
     </span>
   );
 }
+

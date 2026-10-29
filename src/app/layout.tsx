@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow, Barlow_Condensed } from "next/font/google";
+import { Barlow_Condensed, Manrope } from "next/font/google";
 import { MotionRoot } from "@/components/reveal";
 import { hours } from "@/content/site";
 import { rangeText } from "@/lib/hours";
@@ -11,7 +11,7 @@ const display = Barlow_Condensed({
   weight: ["800"],
 });
 
-const text = Barlow({
+const text = Manrope({
   variable: "--font-text",
   subsets: ["latin"],
   weight: ["400", "600"],
@@ -56,3 +56,4 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     </html>
   );
 }
+

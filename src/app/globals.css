@@ -25,8 +25,8 @@
 
   --margin: clamp(16px, 4vw, 56px);
   --max: 1520px;
-  --gap-section: clamp(96px, 12vw, 200px);
-  --header-h: 64px;
+  --gap-section: clamp(72px, 9vw, 144px);
+  --header-h: 80px;
 
   /* The UP arrow: the one shape of the page. */
   --arrow-tab: polygon(0 100%, 0 46%, 50% 0, 100% 46%, 100% 100%);
@@ -207,13 +207,13 @@ body {
   width: 0.8em;
   height: 0.8em;
   flex: none;
-  clip-path: var(--arrow-tab);
+  border-radius: 50%;
   background: currentColor;
 }
 
 /* Photos sit inside the arrow frame, in one grey treatment. */
 .arrow-frame {
-  clip-path: var(--arrow-frame);
+  border-radius: 4px;
   overflow: hidden;
   background: var(--ground-3);
 }
@@ -293,3 +293,4 @@ main:focus {
     scroll-behavior: auto !important;
   }
 }
+

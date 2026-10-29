@@ -62,3 +62,6 @@ Sem publicação, push, deploy, compra de serviço, hooks de Git ou proteções 
 ## GitHub Pages
 Exportação estática com basePath /up-fitness-site e imagens sem otimizador de servidor. O workflow pages.yml valida e publica out/.
 
+
+Hero: public/images/up-fitness-hero-ai.png, gerado pela ferramenta nativa Imagegen com referência fornecida pelo usuário. Prompt: fotografia editorial panorâmica de academia brasileira, equipamentos pretos com detalhes amarelos #ffcb05, luz natural, pessoas treinando, identidade UP Fitness, sem alegar retratar a unidade real. Manter aviso de ilustração.
+

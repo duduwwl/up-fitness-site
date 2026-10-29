@@ -41,3 +41,7 @@ Testado em 320, 375, 390, 768, 1024, 1440, 1920 e 844×390 (paisagem), sem rolag
 ## Manutenção
 
 Novo componente segue os tokens de `globals.css` e o motivo da seta. Rode `pnpm test:e2e` e o inspetor da skill após mudanças visuais.
+
+## Revisão da abertura — 29/10/2026
+Abertura editorial com título à esquerda, ações à direita e foto ampla abaixo. Pastas removidas. Texto em Manrope; títulos Barlow Condensed. Imagem gerada por IA na paleta preta e amarela, com aviso visível de que não retrata Lavras. Sem vídeo incorporado. Navbar mais espaçada, ícones de seta com traço arredondado e fotos sem recorte em seta.
+
