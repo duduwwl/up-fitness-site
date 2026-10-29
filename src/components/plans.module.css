@@ -1,0 +1,138 @@
+.section {
+  background: var(--light);
+}
+
+.heading {
+  margin-bottom: 40px;
+}
+
+.tiles {
+  display: grid;
+  gap: 8px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  background: var(--tone);
+  color: var(--tone-ink);
+}
+.tileBody {
+  padding: 28px;
+  flex: 1;
+}
+.name {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+.price {
+  margin-top: 8px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 2.75rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.currency {
+  font-size: 0.5em;
+  vertical-align: 0.6em;
+}
+.lines {
+  margin-top: 20px;
+  display: grid;
+  gap: 6px;
+}
+
+.strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 64px;
+  padding: 0 28px;
+  background: var(--strip);
+  color: var(--tone-ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 160ms var(--ease);
+}
+.strip:hover {
+  background: var(--strip-hover);
+}
+.strip:focus-visible {
+  outline-color: var(--tone-ink);
+  outline-offset: -5px;
+}
+
+.t0 {
+  --tone: var(--ground-3);
+  --tone-ink: var(--white);
+  --strip: #1f1f1f;
+  --strip-hover: var(--black);
+}
+.t1 {
+  --tone: #474744;
+  --tone-ink: var(--white);
+  --strip: #333331;
+  --strip-hover: #1f1f1f;
+}
+.t2 {
+  --tone: var(--black);
+  --tone-ink: var(--white);
+  --strip: #262626;
+  --strip-hover: #3a3a3a;
+}
+.t3 {
+  --tone: var(--yellow);
+  --tone-ink: var(--black);
+  --strip: var(--yellow-deep);
+  --strip-hover: #c79600;
+}
+
+.note {
+  margin-top: 32px;
+  max-width: 70ch;
+}
+
+@media (min-width: 768px) {
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop: tiles grow with the commitment, like steps going UP. */
+@media (min-width: 1100px) {
+  .stage {
+    position: relative;
+    padding-top: 0;
+  }
+  .heading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 48%;
+    max-width: none;
+    margin: 0;
+  }
+  .tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: end;
+    min-height: 640px;
+  }
+  .t0 {
+    height: 380px;
+  }
+  .t1 {
+    height: 450px;
+  }
+  .t2 {
+    height: 530px;
+  }
+  .t3 {
+    height: 610px;
+  }
+  .price {
+    font-size: 3.5rem;
+  }
+}

@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+/* Tokens. Brand: UP yellow + black (logo); every colour below references these. */
+:root {
+  --black: #0e0e0e;
+  --ground-2: #1c1c1c;
+  --ground-3: #2c2c2c;
+  --light: #ecebe6;
+  --light-2: #d9d8d1;
+  --white: #ffffff;
+  --yellow: #ffcb05;
+  --yellow-deep: #e0aa00;
+  --soft-on-dark: #c4c4bd;
+  --soft-on-light: #44443f;
+
+  --display: var(--font-display), "Arial Narrow", sans-serif;
+  --text: var(--font-text), Arial, sans-serif;
+
+  /* Five type sizes. */
+  --t-hero: clamp(4.5rem, 14vw, 11.5rem);
+  --t-h2: clamp(2.75rem, 6.4vw, 5.75rem);
+  --t-h3: clamp(1.375rem, 1.8vw, 1.75rem);
+  --t-body: 1.125rem;
+  --t-small: 0.9375rem;
+
+  --margin: clamp(16px, 4vw, 56px);
+  --max: 1520px;
+  --gap-section: clamp(96px, 12vw, 200px);
+  --header-h: 64px;
+
+  /* The UP arrow: the one shape of the page. */
+  --arrow-tab: polygon(0 100%, 0 46%, 50% 0, 100% 46%, 100% 100%);
+  --arrow-frame: polygon(50% 0, 100% 18%, 100% 100%, 0 100%, 0 18%);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+html {
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
+}
+
+a,
+button,
+summary,
+select {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--text);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
+.on-yellow :focus-visible,
+.on-light :focus-visible {
+  outline-color: var(--black);
+}
+::selection {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: max(var(--margin), env(safe-area-inset-left), env(safe-area-inset-right));
+}
+
+.display {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+}
+.h2 {
+  font-size: var(--t-h2);
+}
+.h3 {
+  font-family: var(--text);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.small {
+  font-size: var(--t-small);
+}
+.soft {
+  color: var(--soft-on-dark);
+}
+.on-light .soft {
+  color: var(--soft-on-light);
+}
+.on-light,
+.on-yellow {
+  color: var(--black);
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -100px;
+  z-index: 100;
+  background: var(--yellow);
+  color: var(--black);
+  padding: 12px 16px;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Buttons: square, flat, one fill. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 14px 24px;
+  font-weight: 600;
+  font-size: var(--t-body);
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    transform 160ms var(--ease),
+    background-color 160ms var(--ease),
+    color 160ms var(--ease);
+  cursor: pointer;
+}
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+.btn-dark {
+  background: var(--black);
+  color: var(--white);
+}
+.btn-dark:hover {
+  background: var(--ground-3);
+}
+.btn-yellow {
+  background: var(--yellow);
+  color: var(--black);
+}
+.btn-yellow:hover {
+  background: var(--white);
+}
+.arrow-icon {
+  width: 0.75em;
+  height: 0.75em;
+  flex: none;
+  transition: transform 200ms var(--ease);
+}
+.btn:hover .arrow-icon,
+.text-link:hover .arrow-icon {
+  transform: translate(2px, -2px);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  transition: text-decoration-color 160ms var(--ease);
+}
+.text-link:hover {
+  text-decoration-color: var(--yellow);
+}
+.on-light .text-link:hover,
+.on-yellow .text-link:hover {
+  text-decoration-color: transparent;
+}
+
+/* Small arrow bullet, the motif at text size. */
+.bullet {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  flex: none;
+  clip-path: var(--arrow-tab);
+  background: currentColor;
+}
+
+/* Photos sit inside the arrow frame, in one grey treatment. */
+.arrow-frame {
+  clip-path: var(--arrow-frame);
+  overflow: hidden;
+  background: var(--ground-3);
+}
+.photo {
+  filter: saturate(1.05) contrast(1.04);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.caption {
+  margin-top: 12px;
+  font-size: var(--t-small);
+}
+
+.section {
+  padding-block: var(--gap-section);
+}
+
+main:focus {
+  outline: none;
+}
+
+/* Header wordmark: the yellow disc of the logo with the mark inside. */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-disc {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--black);
+}
+.logo-mark {
+  width: 26px;
+  height: 17px;
+}
+.logo-text {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.logo-text span {
+  color: var(--yellow);
+}
+
+/* Live status dot: yellow when open, hollow when closed. */
+.status-dot {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  border-radius: 50%;
+  border: 3px solid currentColor;
+}
+[data-open="true"] > .status-dot {
+  background: currentColor;
+  animation: pulse 2.4s var(--ease) 3;
+}
+@keyframes pulse {
+  50% {
+    transform: scale(1.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

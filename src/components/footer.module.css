@@ -1,0 +1,122 @@
+.footer {
+  background: var(--yellow);
+  padding-top: clamp(64px, 8vw, 120px);
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+}
+
+/* The mark, built large: blocks stepping UP, the last one carries the arrow. */
+.mark {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  gap: 4px;
+  height: clamp(180px, 34svh, 360px);
+}
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--black);
+  color: var(--yellow);
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 0.72;
+  /* Letter cap height follows the band height so it always fits its block. */
+  font-size: clamp(5rem, 20svh, 13rem);
+  padding-top: 0.06em;
+}
+.b1 {
+  height: 62%;
+}
+.b2 {
+  height: 80%;
+}
+.b3 {
+  height: 100%;
+}
+.arrow {
+  width: 46%;
+  height: 72%;
+  background: var(--yellow);
+  clip-path: polygon(50% 0, 100% 42%, 66% 42%, 66% 100%, 34% 100%, 34% 42%, 0 42%);
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 24px;
+  margin-top: 56px;
+  font-size: var(--t-small);
+}
+.colTitle {
+  font-weight: 600;
+  font-size: var(--t-small);
+  margin-bottom: 8px;
+}
+.cols ul {
+  display: grid;
+}
+.cols a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+.cols a:hover {
+  text-decoration-thickness: 3px;
+}
+.addressCol {
+  grid-column: 1 / -1;
+}
+.addressCol address {
+  font-style: normal;
+}
+
+.credits {
+  margin-top: 48px;
+  font-size: var(--t-small);
+  max-width: 110ch;
+}
+.credits a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 32px;
+  font-size: var(--t-small);
+}
+.top {
+  min-height: 44px;
+  padding: 10px 18px;
+  font-size: var(--t-small);
+}
+
+@media (min-width: 900px) {
+  .cols {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .cols > * {
+    grid-column: span 2;
+  }
+  .cols > :nth-child(3) {
+    grid-column: span 3;
+  }
+  .addressCol {
+    grid-column: 9 / -1 !important;
+  }
+}
+
+@media (max-width: 519px) {
+  .cols {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

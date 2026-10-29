@@ -1,0 +1,95 @@
+.section {
+  background: var(--ground-2);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  gap: 48px;
+}
+
+.figure {
+  /* Pushed past the left margin so the viewport crops the arrow. */
+  margin-left: calc(var(--margin) * -1 - 6vw);
+  width: calc(82vw + var(--margin));
+}
+.frame {
+  aspect-ratio: 4 / 5;
+  max-height: 60svh;
+  width: 100%;
+}
+.img {
+  object-position: 18% 60%;
+}
+.figure figcaption {
+  padding-left: calc(var(--margin) + 6vw);
+}
+
+.intro {
+  margin-top: 24px;
+  max-width: 52ch;
+}
+
+.points {
+  display: grid;
+  gap: 28px;
+  margin-top: 48px;
+}
+.pointTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: var(--t-body);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.point p {
+  padding-left: calc(0.8em + 12px);
+}
+.c0 {
+  color: var(--yellow);
+}
+.c1 {
+  color: var(--white);
+}
+.c2 {
+  color: var(--yellow-deep);
+}
+
+@media (min-width: 640px) {
+  .points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+    row-gap: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+    align-items: center;
+  }
+  .figure {
+    grid-column: 1 / span 5;
+    width: auto;
+    margin-left: calc(var(--margin) * -1 - 4vw);
+  }
+  .frame {
+    aspect-ratio: auto;
+    height: 78svh;
+    max-height: 760px;
+  }
+  .figure figcaption {
+    padding-left: calc(var(--margin) + 4vw);
+  }
+  .body {
+    grid-column: 7 / span 6;
+  }
+}
+
+@media (min-width: 1280px) {
+  .points {
+    row-gap: 44px;
+  }
+}

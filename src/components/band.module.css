@@ -1,0 +1,16 @@
+.band {
+  background: var(--light);
+  padding-bottom: 24px;
+}
+.frame {
+  height: clamp(220px, 38vw, 520px);
+  overflow: hidden;
+  /* The arrow rises out of the light section above. */
+  clip-path: polygon(0 14%, 50% 0, 100% 14%, 100% 100%, 0 100%);
+}
+.img {
+  object-position: 50% 62%;
+}
+.caption {
+  color: var(--soft-on-light);
+}
