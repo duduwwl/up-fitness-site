@@ -45,3 +45,7 @@ Novo componente segue os tokens de `globals.css` e o motivo da seta. Rode `pnpm 
 ## Revisão da abertura — 29/10/2026
 Abertura editorial com título à esquerda, ações à direita e foto ampla abaixo. Pastas removidas. Texto em Manrope; títulos Barlow Condensed. Imagem gerada por IA na paleta preta e amarela, com aviso visível de que não retrata Lavras. Sem vídeo incorporado. Navbar mais espaçada, ícones de seta com traço arredondado e fotos sem recorte em seta.
 
+
+## Ajuste aprovado — foto de fundo
+A imagem gerada ocupa o fundo inteiro da abertura. O título volta a Dê um UP, centralizado, sem slogan adicional. Camada preta uniforme preserva contraste; ações, status e aviso de imagem ilustrativa continuam visíveis. No celular a foto recorta para o centro-direita.
+

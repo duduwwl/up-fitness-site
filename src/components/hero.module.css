@@ -1,17 +1,25 @@
-.hero { padding-top: clamp(40px, 6vw, 88px); padding-bottom: 24px; }
-.intro { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: end; padding-bottom: 48px; }
-.title { font-size: clamp(3.5rem, 7.8vw, 8rem); line-height: .94; letter-spacing: -.025em; }
-.title span { color: var(--yellow); }
-.copy { max-width: 500px; padding-bottom: 6px; }
-.lede { font-size: clamp(1.1rem, 1.8vw, 1.4rem); line-height: 1.5; color: var(--soft-on-dark); }
-.actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 28px; }
-.status { display: flex; align-items: center; gap: 10px; margin-top: 24px; font-size: var(--t-small); color: var(--soft-on-dark); }
-.imageFrame { overflow: hidden; background: var(--ground-2); }
-.image { display: block; width: 100%; height: auto; max-height: 680px; object-fit: cover; }
-.caption { color: var(--soft-on-dark); font-size: .8125rem; line-height: 1.5; padding-top: 10px; }
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: calc(100svh - var(--header-h));
+  background: var(--black);
+  overflow: hidden;
+}
+.image { object-fit: cover; object-position: center; z-index: -2; }
+.hero::before { content: ""; position: absolute; inset: 0; background: rgb(0 0 0 / .68); z-index: -1; }
+.intro { text-align: center; padding-block: clamp(80px, 12vh, 160px); }
+.title { font-size: clamp(5rem, 15.5vw, 15rem); line-height: .95; letter-spacing: -.035em; color: var(--yellow); }
+.lede { max-width: 48ch; margin: 28px auto 0; font-size: clamp(1rem, 1.7vw, 1.35rem); line-height: 1.55; color: var(--white); }
+.actions { display: flex; justify-content: center; align-items: center; gap: 28px; flex-wrap: wrap; margin-top: 32px; }
+.status { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 28px; font-size: var(--t-small); color: var(--white); }
+.caption { position: absolute; bottom: 14px; inset-inline: var(--margin); text-align: center; color: #e1e1dc; font-size: .75rem; line-height: 1.5; }
 @media (max-width: 767px) {
-  .intro { grid-template-columns: 1fr; gap: 24px; padding-bottom: 32px; }
-  .title { font-size: clamp(3.4rem, 13vw, 6rem); }
-  .image { min-height: 300px; object-fit: cover; object-position: 55% center; }
-  .actions { gap: 20px; }
+  .image { object-position: 58% center; }
+  .intro { padding-block: 80px 100px; }
+  .title { font-size: clamp(4.2rem, 18vw, 8rem); }
+  .lede { max-width: 34ch; margin-top: 24px; }
+  .actions { gap: 24px; }
+  .status { max-width: 32ch; margin-inline: auto; }
 }
