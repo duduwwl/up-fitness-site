@@ -10,7 +10,7 @@ export function Hero() {
     <section id="inicio" className={styles.hero} aria-labelledby="hero-title">
       <div className={`wrap ${styles.intro}`}>
         <div>
-          <h1 id="hero-title" className={`display ${styles.title}`}>Seu treino.<br /><span>Seu ritmo.</span><br />Dê um UP.</h1>
+          <h1 id="hero-title" className={`display ${styles.title}`}>Seu treino.<br /><span>Dê um UP.</span></h1>
         </div>
         <div className={styles.copy}>
           <p className={styles.lede}>{brand.tagline}</p>
@@ -32,3 +32,4 @@ export function Hero() {
     </section>
   );
 }
+
