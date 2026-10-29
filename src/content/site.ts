@@ -129,7 +129,7 @@ export type Photo = {
 // captions say what each one is. Replace with authorised photos of the unit when available.
 export const photos = {
   barbell: {
-    src: "/up-fitness-site/images/olympic-barbell.jpg",
+    src: "/up-fitness-site/images/olympic-barbell.webp",
     width: 1920,
     height: 1043,
     alt: "Anilhas vermelhas de 25 kg presas a uma barra olímpica sobre o piso emborrachado",
@@ -139,7 +139,7 @@ export const photos = {
     page: "https://commons.wikimedia.org/wiki/File:Olympic_barbell.jpg",
   },
   plates: {
-    src: "/up-fitness-site/images/weight-plates-in-gym-20180112.jpg",
+    src: "/up-fitness-site/images/weight-plates-in-gym-20180112.webp",
     width: 1920,
     height: 1442,
     alt: "Anilhas coloridas enfileiradas em suportes no chão",
@@ -149,7 +149,7 @@ export const photos = {
     page: "https://commons.wikimedia.org/wiki/File:Weight_plates_in_gym_20180112.jpg",
   },
   dumbbells: {
-    src: "/up-fitness-site/images/colorful-pile-of-dumbbells-at-the-gym.jpg",
+    src: "/up-fitness-site/images/colorful-pile-of-dumbbells-at-the-gym.webp",
     width: 1920,
     height: 1440,
     alt: "Halteres emborrachados laranja, verdes, azuis e pretos empilhados",
@@ -159,7 +159,7 @@ export const photos = {
     page: "https://commons.wikimedia.org/wiki/File:Colorful_pile_of_dumbbells_at_the_gym.jpg",
   },
   church: {
-    src: "/up-fitness-site/images/igreja-do-rosario-lavras-minas-gerais-31469695694.jpg",
+    src: "/up-fitness-site/images/igreja-do-rosario-lavras-minas-gerais-31469695694.webp",
     width: 1920,
     height: 1382,
     alt: "Igreja do Rosário, casarão branco com janelas verdes, no centro de Lavras",
@@ -169,7 +169,7 @@ export const photos = {
     page: "https://commons.wikimedia.org/wiki/File:Igreja_do_Ros%C3%A1rio_-_Lavras_-_Minas_Gerais_(31469695694).jpg",
   },
   fig: {
-    src: "/up-fitness-site/images/figueira-centenaria-lavras-minas-gerais-31469706774.jpg",
+    src: "/up-fitness-site/images/figueira-centenaria-lavras-minas-gerais-31469706774.webp",
     width: 1920,
     height: 2880,
     alt: "Figueira centenária de galhos largos em praça arborizada de Lavras",
@@ -194,4 +194,5 @@ export const pending = [
   "Domínio definitivo do site, para URL canônica, sitemap e robots.",
   "Regras de uso da área kids.",
 ];
+
 

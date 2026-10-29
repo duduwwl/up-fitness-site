@@ -28,5 +28,7 @@ export default defineConfig([
     ".claude/**",
     ".codex/**",
     "graphify-out/**",
+    "work/**",
   ]),
 ]);
+

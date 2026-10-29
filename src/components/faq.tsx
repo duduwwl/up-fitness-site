@@ -1,3 +1,4 @@
+import { TextEffects } from "./text-effects";
 import Image from "next/image";
 import { faqs, photos } from "@/content/site";
 import { Reveal, RevealItem } from "./reveal";
@@ -6,6 +7,7 @@ import styles from "./faq.module.css";
 export function Faq() {
   const p = photos.dumbbells;
   return (
+    <TextEffects>
     <section id="duvidas" className={`section on-light ${styles.section}`} aria-labelledby="duvidas-title">
       <div className={`wrap ${styles.grid}`}>
         <div className={styles.side}>
@@ -42,5 +44,7 @@ export function Faq() {
         </Reveal>
       </div>
     </section>
+    </TextEffects>
   );
 }
+

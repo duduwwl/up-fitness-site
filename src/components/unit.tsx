@@ -1,3 +1,4 @@
+import { TextEffects } from "./text-effects";
 import Image from "next/image";
 import { address, contact, holidayHours, hours, mapsUrl, photos } from "@/content/site";
 import { rangeText as range } from "@/lib/hours";
@@ -9,6 +10,7 @@ import styles from "./unit.module.css";
 
 export function Unit() {
   return (
+    <TextEffects>
     <section id="unidade" className={`section ${styles.section}`} aria-labelledby="unidade-title">
       <div className={`wrap ${styles.grid}`}>
         <Reveal className={styles.info}>
@@ -76,5 +78,7 @@ export function Unit() {
         </div>
       </div>
     </section>
+    </TextEffects>
   );
 }
+

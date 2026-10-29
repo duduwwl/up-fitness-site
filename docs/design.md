@@ -49,3 +49,7 @@ Abertura editorial com título à esquerda, ações à direita e foto ampla abai
 ## Ajuste aprovado — foto de fundo
 A imagem gerada ocupa o fundo inteiro da abertura. O título volta a Dê um UP, centralizado, sem slogan adicional. Camada preta uniforme preserva contraste; ações, status e aviso de imagem ilustrativa continuam visíveis. No celular a foto recorta para o centro-direita.
 
+
+## Movimento aprovado — 29/10/2026
+Texto estático recebe spans por palavra e entra com blur leve uma vez por viewport. Campos, opções, SVG e status dinâmico não são fragmentados. Sem JavaScript o texto continua visível. Planos entram com escala e defasagem; FlameWrap fornecido pelo usuário contorna preços em amarelo apenas com suporte nativo a HTML-in-canvas. O rodapé é revelado atrás do main em telas grandes; telas curtas/celulares usam fluxo normal para manter links acessíveis. Movimento reduzido desativa animações decorativas.
+

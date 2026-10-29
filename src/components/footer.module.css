@@ -120,3 +120,12 @@
     gap: 24px;
   }
 }
+
+.footer { padding-top: 40px; }
+.mark { height: 140px; }
+.cols { margin-top: 32px; }
+.credits { margin-top: 24px; }
+
+
+.footer { position: var(--footer-position, static); bottom: 0; z-index: 0; }
+

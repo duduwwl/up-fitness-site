@@ -1,3 +1,4 @@
+import { TextEffects } from "./text-effects";
 import { checkedAt, contact, plans } from "@/content/site";
 import { Reveal, RevealItem } from "./reveal";
 import styles from "./plans.module.css";
@@ -6,6 +7,7 @@ const checkedDate = new Date(`${checkedAt}T12:00:00`).toLocaleDateString("pt-BR"
 
 export function Plans() {
   return (
+    <TextEffects>
     <section id="planos" className={`section on-light ${styles.section}`} aria-labelledby="planos-title">
       <div className="wrap">
         <Reveal className={styles.stage}>
@@ -16,12 +18,14 @@ export function Plans() {
             {plans.map((p, i) => (
               <RevealItem as="li" key={p.name} className={`${styles.tile} ${styles[`t${i}`]}`}>
                 <div className={styles.tileBody}>
-                  <h3 className={styles.name}>{p.name}</h3>
+                  <p className={styles.name}>{p.name}</p>
                   {/* Shown exactly as the official sales page shows it (amount + installments). */}
-                  <p className={styles.price}>
+                  <div className={styles.priceEffect}>
+                    <p className={styles.price}>
                     {p.name === "Bimestral" ? `${p.installments} × ` : ""}
                     <span className={styles.currency}>R$</span> {p.price}
-                  </p>
+                    </p>
+                  </div>
                   <ul className={styles.lines}>
                     <li>
                       {p.installments} parcelas, {p.months} meses
@@ -32,6 +36,7 @@ export function Plans() {
                 </div>
                 <a
                   className={styles.strip}
+                  data-ui
                   href={contact.salesUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -50,5 +55,9 @@ export function Plans() {
         </p>
       </div>
     </section>
+    </TextEffects>
   );
 }
+
+
+

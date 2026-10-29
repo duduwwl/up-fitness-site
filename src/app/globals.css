@@ -294,3 +294,12 @@ main:focus {
   }
 }
 
+
+/* Word entrances leave server-rendered text visible until animation starts. */
+.text-word { display: inline-block; }
+.text-entered > .text-word { animation: word-enter .55s both; }
+@keyframes word-enter { from { filter: blur(5px); transform: translateY(5px); } to { filter: blur(0); transform: none; } }
+main { position: relative; z-index: 2; background: var(--black); }
+@media (prefers-reduced-motion: reduce) {
+  .text-word { animation: none !important; filter: none !important; transform: none !important; opacity: 1 !important; }
+}

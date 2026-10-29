@@ -1,5 +1,6 @@
 "use client";
 
+import { TextEffects } from "./text-effects";
 import { AnimatePresence, m } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { whatsappUrl, visitMessage } from "@/lib/links";
@@ -31,6 +32,7 @@ export function Header() {
   }, [open]);
 
   return (
+    <TextEffects>
     <header className={styles.header}>
       <div className={`wrap ${styles.bar}`}>
         <a href="#inicio" className={styles.brand} aria-label="UP Fitness, voltar ao início">
@@ -108,5 +110,8 @@ export function Header() {
         )}
       </AnimatePresence>
     </header>
+    </TextEffects>
   );
 }
+
+

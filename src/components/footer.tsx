@@ -1,3 +1,4 @@
+import { TextEffects } from "./text-effects";
 import { address, checkedAt, contact, mapsUrl, photos } from "@/content/site";
 import { visitMessage, whatsappUrl } from "@/lib/links";
 import { navItems } from "@/lib/nav";
@@ -10,6 +11,7 @@ export function Footer() {
   // Static page: a build-time Date would freeze anyway; use the content check year explicitly.
   const year = checkedAt.slice(0, 4);
   return (
+    <TextEffects>
     <footer className={`on-yellow ${styles.footer}`}>
       <div className="wrap">
         <div className={styles.mark} aria-hidden="true">
@@ -102,5 +104,7 @@ export function Footer() {
         </div>
       </div>
     </footer>
+    </TextEffects>
   );
 }
+

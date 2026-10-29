@@ -21,6 +21,7 @@ const weekday = hours[0];
 const description = `Academia de musculação na Zona Sul de Lavras (MG): dois andares climatizados, equipamentos importados, aberta de ${weekday.label.toLowerCase()} das ${rangeText(weekday.open, weekday.close)}. Planos com horário livre.`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://duduwwl.github.io/up-fitness-site/"),
   title: "UP Fitness Zona Sul | Academia em Lavras, MG",
   description,
   applicationName: "UP Fitness",

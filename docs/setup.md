@@ -65,3 +65,7 @@ Exportação estática com basePath /up-fitness-site e imagens sem otimizador de
 
 Hero: public/images/up-fitness-hero-ai.png, gerado pela ferramenta nativa Imagegen com referência fornecida pelo usuário. Prompt: fotografia editorial panorâmica de academia brasileira, equipamentos pretos com detalhes amarelos #ffcb05, luz natural, pessoas treinando, identidade UP Fitness, sem alegar retratar a unidade real. Manter aviso de ilustração.
 
+
+Fotos: versões WebP derivadas dos arquivos originais, qualidade 90 e nitidez leve, máximo de 1920 px no lado maior e sem aumento artificial de resolução. Originais e créditos preservados. FlameWrap e shaders foram fornecidos pelo usuário; mantidos sem reescrever o algoritmo experimental.
+
+

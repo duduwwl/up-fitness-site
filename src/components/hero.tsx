@@ -1,3 +1,4 @@
+import { TextEffects } from "./text-effects";
 import Image from "next/image";
 import { brand } from "@/content/site";
 import { visitMessage, whatsappUrl } from "@/lib/links";
@@ -7,8 +8,9 @@ import styles from "./hero.module.css";
 
 export function Hero() {
   return (
+    <TextEffects>
     <section id="inicio" className={styles.hero} aria-labelledby="hero-title" aria-describedby="hero-caption">
-      <Image src="/up-fitness-site/images/up-fitness-hero-ai.png" alt="" fill sizes="100vw" preload className={styles.image} />
+      <Image src="/up-fitness-site/images/up-fitness-hero-ai.webp" alt="" fill sizes="100vw" preload className={styles.image} />
       <div className={`wrap ${styles.intro}`}>
         <h1 id="hero-title" className={`display ${styles.title}`}>Dê um UP</h1>
         <p className={styles.lede}>{brand.tagline}</p>
@@ -22,5 +24,8 @@ export function Hero() {
       </div>
       <p id="hero-caption" className={styles.caption}>Imagem ilustrativa criada com IA. Não retrata a unidade de Lavras.</p>
     </section>
+    </TextEffects>
   );
 }
+
+

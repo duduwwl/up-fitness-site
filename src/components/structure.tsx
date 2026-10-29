@@ -1,26 +1,44 @@
+import { TextEffects } from "./text-effects";
 import Image from "next/image";
 import { amenities, photos } from "@/content/site";
 import { Reveal, RevealItem } from "./reveal";
 import styles from "./structure.module.css";
 
 export function Structure() {
-  const p = photos.barbell;
+  const primary = photos.barbell;
+  const secondary = photos.dumbbells;
   return (
+    <TextEffects>
     <section id="estrutura" className={`section ${styles.section}`} aria-labelledby="estrutura-title">
       <div className={`wrap ${styles.grid}`}>
-        <figure className={styles.figure}>
-          <div className={`arrow-frame ${styles.frame}`}>
-            <Image
-              className={`photo ${styles.img}`}
-              src={p.src}
-              width={p.width}
-              height={p.height}
-              alt={p.alt}
-              sizes="(min-width: 1024px) 45vw, 90vw"
-            />
-          </div>
-          <figcaption className="caption soft">{p.caption}</figcaption>
-        </figure>
+        <Reveal className={styles.media}>
+          <RevealItem scale as="figure" className={styles.figure}>
+            <div className={`arrow-frame ${styles.frame}`}>
+              <Image
+                className={`photo ${styles.img}`}
+                src={primary.src}
+                width={primary.width}
+                height={primary.height}
+                alt={primary.alt}
+                sizes="(min-width: 1024px) 42vw, 92vw"
+              />
+            </div>
+            <figcaption className="visually-hidden">{primary.caption}</figcaption>
+          </RevealItem>
+          <RevealItem scale as="figure" className={styles.secondary}>
+            <div className={`arrow-frame ${styles.secondaryFrame}`}>
+              <Image
+                className="photo"
+                src={secondary.src}
+                width={secondary.width}
+                height={secondary.height}
+                alt={secondary.alt}
+                sizes="(min-width: 1024px) 18vw, 42vw"
+              />
+            </div>
+            <figcaption className="visually-hidden">{secondary.caption}</figcaption>
+          </RevealItem>
+        </Reveal>
 
         <Reveal className={styles.body}>
           <RevealItem as="h2" className="display h2">
@@ -44,5 +62,7 @@ export function Structure() {
         </Reveal>
       </div>
     </section>
+    </TextEffects>
   );
 }
+

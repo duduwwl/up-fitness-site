@@ -8,10 +8,23 @@
   gap: 48px;
 }
 
+.media {
+  position: relative;
+  min-width: 0;
+  padding-bottom: 24vw;
+}
 .figure {
-  /* Pushed past the left margin so the viewport crops the arrow. */
-  margin-left: calc(var(--margin) * -1 - 6vw);
-  width: calc(82vw + var(--margin));
+  width: 100%;
+}
+.secondary {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 48%;
+  z-index: 1;
+}
+.secondaryFrame {
+  aspect-ratio: 4 / 5;
 }
 .frame {
   aspect-ratio: 4 / 5;
@@ -20,9 +33,6 @@
 }
 .img {
   object-position: 18% 60%;
-}
-.figure figcaption {
-  padding-left: calc(var(--margin) + 6vw);
 }
 
 .intro {
@@ -70,18 +80,22 @@
     column-gap: 24px;
     align-items: center;
   }
-  .figure {
+  .media {
     grid-column: 1 / span 5;
+    padding-bottom: 120px;
+  }
+  .figure {
     width: auto;
-    margin-left: calc(var(--margin) * -1 - 4vw);
+    margin-left: 0;
   }
   .frame {
     aspect-ratio: auto;
     height: 78svh;
     max-height: 760px;
   }
-  .figure figcaption {
-    padding-left: calc(var(--margin) + 4vw);
+  .secondary {
+    right: -14%;
+    width: 52%;
   }
   .body {
     grid-column: 7 / span 6;

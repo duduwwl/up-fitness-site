@@ -3,6 +3,7 @@
 // Adapted from motion-primitives "In View" (MIT, github.com/ibelick/motion-primitives).
 // Children with data-reveal rise in one after another the first time the block enters the viewport.
 import { LazyMotion, MotionConfig, domAnimation, m, type Variants } from "motion/react";
+import { TextObserver } from "./text-observer";
 import type { ReactNode } from "react";
 
 const container: Variants = {
@@ -19,7 +20,7 @@ export function MotionRoot({ children }: { children: ReactNode }) {
   // reducedMotion="user" drops the travel and keeps the fade for people who ask for less motion.
   return (
     <LazyMotion features={domAnimation} strict>
-      <MotionConfig reducedMotion="user">{children}</MotionConfig>
+      <MotionConfig reducedMotion="user"><TextObserver />{children}</MotionConfig>
     </LazyMotion>
   );
 }
@@ -41,13 +42,14 @@ export function Reveal({ children, className, as = "div" }: RevealProps) {
   );
 }
 
-type ItemProps = { children: ReactNode; className?: string; as?: "div" | "li" | "p" | "h2" | "figure" };
+type ItemProps = { children: ReactNode; className?: string; as?: "div" | "li" | "p" | "h2" | "figure"; scale?: boolean };
 
-export function RevealItem({ children, className, as = "div" }: ItemProps) {
+export function RevealItem({ children, className, as = "div", scale = false }: ItemProps) {
   const Tag = m[as];
   return (
-    <Tag className={className} variants={item} data-reveal>
+    <Tag className={className} variants={scale ? { hidden: { opacity: 0, scale: 0.92 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } } : item} data-reveal>
       {children}
     </Tag>
   );
 }
+

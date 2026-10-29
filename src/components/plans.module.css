@@ -16,6 +16,10 @@
   flex-direction: column;
   background: var(--tone);
   color: var(--tone-ink);
+  transition: transform 220ms var(--ease);
+}
+.tile:hover {
+  transform: scale(1.01);
 }
 .tileBody {
   padding: 28px;
@@ -33,6 +37,22 @@
   font-size: 2.75rem;
   line-height: 1;
   font-variant-numeric: tabular-nums;
+}
+.priceEffect {
+  position: relative;
+  width: fit-content;
+  margin-top: 8px;
+  padding: 2px 6px 5px;
+  background: color-mix(in srgb, var(--tone-ink) 7%, transparent);
+  border-bottom: 4px solid var(--yellow);
+  animation: price-heat 2.8s var(--ease) infinite alternate;
+}
+.priceEffect .price {
+  margin-top: 0;
+}
+@keyframes price-heat {
+  from { border-bottom-color: var(--yellow-deep); transform: translateY(0); }
+  to { border-bottom-color: var(--yellow); transform: translateY(-2px); }
 }
 .currency {
   font-size: 0.5em;
@@ -56,6 +76,11 @@
   font-weight: 600;
   text-decoration: none;
   transition: background-color 160ms var(--ease);
+}
+.strip::after {
+  content: "↗";
+  margin-left: auto;
+  font-size: 1.15em;
 }
 .strip:hover {
   background: var(--strip-hover);
@@ -89,10 +114,37 @@
   --strip: var(--yellow-deep);
   --strip-hover: #c79600;
 }
+.t3 .tileBody {
+  text-align: right;
+}
+.t3 .priceEffect {
+  margin-left: auto;
+}
+.t3 .lines {
+  justify-items: end;
+}
+.t3 .priceEffect {
+  border-bottom-color: var(--black);
+  background: rgb(0 0 0 / 8%);
+  animation-name: price-heat-dark;
+}
+@keyframes price-heat-dark {
+  from { border-bottom-color: #4a3800; transform: translateY(0); }
+  to { border-bottom-color: var(--black); transform: translateY(-2px); }
+}
 
 .note {
   margin-top: 32px;
   max-width: 70ch;
+}
+
+@media (max-width: 767px) {
+  .tileBody {
+    padding-inline: 16px;
+  }
+  .strip {
+    padding-inline: 16px;
+  }
 }
 
 @media (min-width: 768px) {

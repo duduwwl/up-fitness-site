@@ -7,8 +7,9 @@
   background: var(--black);
   overflow: hidden;
 }
-.image { object-fit: cover; object-position: center; z-index: -2; }
-.hero::before { content: ""; position: absolute; inset: 0; background: rgb(0 0 0 / .68); z-index: -1; }
+.image { object-fit: cover; object-position: center; z-index: -2; animation: hero-drift 16s var(--ease) both; }
+.hero::before { content: ""; position: absolute; inset: 0; background: rgb(0 0 0 / .58); z-index: -1; }
+@keyframes hero-drift { from { transform: scale(1.045); } to { transform: scale(1); } }
 .intro { text-align: center; padding-block: clamp(80px, 12vh, 160px); }
 .title { font-size: clamp(5rem, 15.5vw, 15rem); line-height: .95; letter-spacing: -.035em; color: var(--yellow); }
 .lede { max-width: 48ch; margin: 28px auto 0; font-size: clamp(1rem, 1.7vw, 1.35rem); line-height: 1.55; color: var(--white); }

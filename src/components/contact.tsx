@@ -1,5 +1,6 @@
 "use client";
 
+import { TextEffects } from "./text-effects";
 import { useState, type FormEvent } from "react";
 import { flushSync } from "react-dom";
 import {
@@ -51,6 +52,7 @@ export function Contact() {
   const describedBy = (key: keyof ContactInput) => (errors[key] ? `c-${key}-error` : undefined);
 
   return (
+    <TextEffects>
     <section id="contato" className={`section ${styles.section}`} aria-labelledby="contato-title">
       <div className="wrap">
         <div className={`${styles.coupon} on-yellow`}>
@@ -150,5 +152,7 @@ export function Contact() {
         </div>
       </div>
     </section>
+    </TextEffects>
   );
 }
+
