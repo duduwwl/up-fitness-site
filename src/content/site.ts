@@ -54,18 +54,52 @@ export const holidayHours = { label: "Feriados", open: "08:00", close: "20:00" }
 
 export type Plan = {
   name: string;
-  months: number;
   price: string;
-  installments: number;
-  listPrice: string;
+  commitment: string;
+  schedule: string;
+  features: string[];
+  badge?: string;
 };
 
-// Source: upfitness.actuar.com ("Planos recorrentes UP Fitness"), all with free schedule ("Horários livre").
+// Sources: upfitness.actuar.com and the academy's published economic offer.
 export const plans: Plan[] = [
-  { name: "Bimestral", months: 2, price: "179,90", installments: 2, listPrice: "199,90" },
-  { name: "Trimestral", months: 3, price: "169,90", installments: 3, listPrice: "199,90" },
-  { name: "Semestral", months: 6, price: "159,90", installments: 6, listPrice: "199,90" },
-  { name: "Anual", months: 12, price: "149,90", installments: 12, listPrice: "199,90" },
+  {
+    name: "Econômico",
+    price: "89,90",
+    commitment: "Mensal",
+    schedule: "Treino das 12h às 16h",
+    features: ["Acesso à unidade Zona Sul", "Musculação nos dois andares", "Ambiente climatizado"],
+    badge: "Menor mensalidade",
+  },
+  {
+    name: "Bimestral",
+    price: "179,90",
+    commitment: "2 parcelas, 2 meses",
+    schedule: "Horário livre",
+    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados"],
+  },
+  {
+    name: "Trimestral",
+    price: "169,90",
+    commitment: "3 parcelas, 3 meses",
+    schedule: "Horário livre",
+    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados"],
+  },
+  {
+    name: "Semestral",
+    price: "159,90",
+    commitment: "6 parcelas, 6 meses",
+    schedule: "Horário livre",
+    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados"],
+  },
+  {
+    name: "Anual",
+    price: "149,90",
+    commitment: "12 parcelas, 12 meses",
+    schedule: "Horário livre",
+    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Melhor valor no horário livre"],
+    badge: "Melhor custo-benefício",
+  },
 ];
 
 // Sources: Instagram bio (2 andares, climatizado, equipamentos importados), highlight "Área kids",
@@ -94,7 +128,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Quais planos existem e quanto custam?",
-    a: "A página oficial de vendas mostra: bimestral em 2 × R$ 179,90; trimestral por R$ 169,90 em 3 parcelas; semestral por R$ 159,90 em 6 parcelas; anual por R$ 149,90 em 12 parcelas. Todos com horário livre. Valores sujeitos a mudança; confira as condições na hora de assinar.",
+    a: "O plano econômico custa R$ 89,90 por mês para treinar das 12h às 16h. Os planos com horário livre são: bimestral por R$ 179,90, trimestral por R$ 169,90, semestral por R$ 159,90 e anual por R$ 149,90. Valores sujeitos a mudança; confira as condições na hora de assinar.",
   },
   {
     q: "Posso assinar pela internet?",
@@ -125,64 +159,52 @@ export type Photo = {
   page: string;
 };
 
-// Openly licensed pictures (Wikimedia Commons). None of them shows the UP Fitness unit;
-// captions say what each one is. Replace with authorised photos of the unit when available.
+// Photos published by the official @upfitness_lavras profile.
 export const photos = {
-  barbell: {
-    src: "/up-fitness-site/images/olympic-barbell.webp",
-    width: 1920,
-    height: 1043,
-    alt: "Anilhas vermelhas de 25 kg presas a uma barra olímpica sobre o piso emborrachado",
-    caption: "Barra olímpica com anilhas. Imagem ilustrativa.",
-    credit: "Tomáš Pilík",
-    license: "CC BY-SA 3.0",
-    page: "https://commons.wikimedia.org/wiki/File:Olympic_barbell.jpg",
+  tour: {
+    src: "/up-fitness-site/images/instagram-tour.webp",
+    width: 1080,
+    height: 1917,
+    alt: "Fachada da UP Fitness Zona Sul e aluna em frente à unidade",
+    caption: "Tour pela UP Fitness Zona Sul.",
+    credit: "UP Fitness Lavras",
+    license: "Instagram oficial",
+    page: "https://www.instagram.com/reel/DdRS6LAx-dT/",
   },
-  plates: {
-    src: "/up-fitness-site/images/weight-plates-in-gym-20180112.webp",
-    width: 1920,
-    height: 1442,
-    alt: "Anilhas coloridas enfileiradas em suportes no chão",
-    caption: "Anilhas em suportes. Imagem ilustrativa.",
-    credit: "Wikimedia Commons",
-    license: "CC BY-SA 4.0",
-    page: "https://commons.wikimedia.org/wiki/File:Weight_plates_in_gym_20180112.jpg",
+  parking: {
+    src: "/up-fitness-site/images/instagram-estacionamento.webp",
+    width: 1080,
+    height: 1344,
+    alt: "Fachada e estacionamento da UP Fitness Zona Sul",
+    caption: "Fachada e estacionamento da unidade.",
+    credit: "UP Fitness Lavras",
+    license: "Instagram oficial",
+    page: "https://www.instagram.com/p/DfFEsozRnQF/",
   },
-  dumbbells: {
-    src: "/up-fitness-site/images/colorful-pile-of-dumbbells-at-the-gym.webp",
-    width: 1920,
-    height: 1440,
-    alt: "Halteres emborrachados laranja, verdes, azuis e pretos empilhados",
-    caption: "Halteres. Imagem ilustrativa.",
-    credit: "Ser Amantio di Nicolao",
-    license: "CC BY-SA 4.0",
-    page: "https://commons.wikimedia.org/wiki/File:Colorful_pile_of_dumbbells_at_the_gym.jpg",
+  training: {
+    src: "/up-fitness-site/images/instagram-treino.webp",
+    width: 720,
+    height: 1280,
+    alt: "Aluna treinando na esteira dentro da UP Fitness Zona Sul",
+    caption: "Área de cardio da UP Fitness Zona Sul.",
+    credit: "UP Fitness Lavras",
+    license: "Instagram oficial",
+    page: "https://www.instagram.com/reel/De2Sp1Xy_Ij/",
   },
-  church: {
-    src: "/up-fitness-site/images/igreja-do-rosario-lavras-minas-gerais-31469695694.webp",
-    width: 1920,
-    height: 1382,
-    alt: "Igreja do Rosário, casarão branco com janelas verdes, no centro de Lavras",
-    caption: "Igreja do Rosário, centro de Lavras.",
-    credit: "Marinelson Almeida",
-    license: "CC BY 2.0",
-    page: "https://commons.wikimedia.org/wiki/File:Igreja_do_Ros%C3%A1rio_-_Lavras_-_Minas_Gerais_(31469695694).jpg",
-  },
-  fig: {
-    src: "/up-fitness-site/images/figueira-centenaria-lavras-minas-gerais-31469706774.webp",
-    width: 1920,
-    height: 2880,
-    alt: "Figueira centenária de galhos largos em praça arborizada de Lavras",
-    caption: "Figueira centenária, Lavras.",
-    credit: "Marinelson Almeida",
-    license: "CC BY 2.0",
-    page: "https://commons.wikimedia.org/wiki/File:Figueira_Centen%C3%A1ria_-_Lavras_Minas_Gerais_(31469706774).jpg",
+  team: {
+    src: "/up-fitness-site/images/instagram-estrutura.webp",
+    width: 1080,
+    height: 1918,
+    alt: "Equipe da UP Fitness dentro da academia Zona Sul",
+    caption: "Equipe e estrutura da UP Fitness Zona Sul.",
+    credit: "UP Fitness Lavras",
+    license: "Instagram oficial",
+    page: "https://www.instagram.com/reel/DezRqgoR_Sc/",
   },
 } satisfies Record<string, Photo>;
 
 // Open questions for the academy before publishing. Shown nowhere on the page.
 export const pending = [
-  "Fotos autorizadas da unidade (fachada, andares, área kids) para substituir as imagens ilustrativas.",
   "Logotipo oficial em vetor (SVG/PDF); o site usa uma recriação simplificada.",
   "Confirmar se R$ 169,90 / R$ 159,90 / R$ 149,90 são valores por parcela mensal (a página de vendas mostra só o valor e o número de parcelas); o site exibe assim, sem '/mês'.",
   "Calendário de feriados: o status 'aberta agora' segue o horário regular e avisa 'exceto feriados'.",

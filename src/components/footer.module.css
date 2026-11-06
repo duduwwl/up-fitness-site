@@ -4,42 +4,14 @@
   padding-bottom: max(32px, env(safe-area-inset-bottom));
 }
 
-/* The mark, built large: blocks stepping UP, the last one carries the arrow. */
-.mark {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: end;
-  gap: 4px;
-  height: clamp(180px, 34svh, 360px);
-}
-.block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: var(--black);
-  color: var(--yellow);
-  font-family: var(--display);
-  font-weight: 800;
-  line-height: 0.72;
-  /* Letter cap height follows the band height so it always fits its block. */
-  font-size: clamp(5rem, 20svh, 13rem);
-  padding-top: 0.06em;
-}
-.b1 {
-  height: 62%;
-}
-.b2 {
-  height: 80%;
-}
-.b3 {
-  height: 100%;
-}
-.arrow {
-  width: 46%;
-  height: 72%;
-  background: var(--yellow);
-  clip-path: polygon(50% 0, 100% 42%, 66% 42%, 66% 100%, 34% 100%, 34% 42%, 0 42%);
+.logoLink { display: block; width: fit-content; border-radius: 50%; }
+.logo {
+  display: block;
+  width: clamp(180px, 26vw, 320px);
+  height: auto;
+  border: 8px solid var(--black);
+  border-radius: 50%;
+  box-shadow: 12px 12px 0 rgb(0 0 0 / 18%);
 }
 
 .cols {
@@ -122,7 +94,6 @@
 }
 
 .footer { padding-top: 40px; }
-.mark { height: 140px; }
 .cols { margin-top: 32px; }
 .credits { margin-top: 24px; }
 

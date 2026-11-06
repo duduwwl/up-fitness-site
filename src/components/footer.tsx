@@ -1,5 +1,6 @@
 import { TextEffects } from "./text-effects";
-import { address, checkedAt, contact, mapsUrl, photos } from "@/content/site";
+import Image from "next/image";
+import { address, checkedAt, contact, mapsUrl } from "@/content/site";
 import { visitMessage, whatsappUrl } from "@/lib/links";
 import { navItems } from "@/lib/nav";
 import styles from "./footer.module.css";
@@ -14,14 +15,15 @@ export function Footer() {
     <TextEffects>
     <footer className={`on-yellow ${styles.footer}`}>
       <div className="wrap">
-        <div className={styles.mark} aria-hidden="true">
-          <span className={`${styles.block} ${styles.b1}`}>U</span>
-          <span className={`${styles.block} ${styles.b2}`}>P</span>
-          <span className={`${styles.block} ${styles.b3}`}>
-            <span className={styles.arrow} />
-          </span>
-        </div>
-        <p className="visually-hidden">UP Fitness</p>
+        <a className={styles.logoLink} href="#inicio" aria-label="UP Fitness — voltar ao início">
+          <Image
+            className={styles.logo}
+            src="/up-fitness-site/images/instagram-logo.webp"
+            width={320}
+            height={320}
+            alt="UP Fitness"
+          />
+        </a>
 
         <div className={styles.cols}>
           <nav aria-label="Rodapé">
@@ -83,17 +85,10 @@ export function Footer() {
         </div>
 
         <p className={styles.credits}>
-          Fotos ilustrativas via Wikimedia Commons:{" "}
-          {Object.values(photos).map((p, i, all) => (
-            <span key={p.src}>
-              <a href={p.page} {...ext}>
-                {p.caption.replace(/\. Imagem ilustrativa\.$|\.$/, "")}
-                <NewTab />
-              </a>
-              , {p.credit}, {p.license}
-              {i < all.length - 1 ? "; " : "."}
-            </span>
-          ))}
+          Fotos da unidade publicadas no Instagram oficial{" "}
+          <a href={contact.instagramUnit} {...ext}>
+            {contact.instagramUnitHandle}<NewTab />
+          </a>.
         </p>
 
         <div className={styles.bottom}>

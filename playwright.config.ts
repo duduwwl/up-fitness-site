@@ -15,7 +15,7 @@ export default defineConfig({
     timezoneId: "America/Sao_Paulo",
   },
   webServer: {
-    command: `pnpm start --port ${PORT}`,
+    command: `node scripts/serve-export.mjs ${PORT}`,
     url: `http://localhost:${PORT}`,
     reuseExistingServer: false,
     timeout: 60_000,

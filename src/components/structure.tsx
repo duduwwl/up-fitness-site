@@ -5,8 +5,8 @@ import { Reveal, RevealItem } from "./reveal";
 import styles from "./structure.module.css";
 
 export function Structure() {
-  const primary = photos.barbell;
-  const secondary = photos.dumbbells;
+  const primary = photos.training;
+  const secondary = photos.team;
   return (
     <TextEffects>
     <section id="estrutura" className={`section ${styles.section}`} aria-labelledby="estrutura-title">

@@ -9,7 +9,7 @@
   clip-path: polygon(0 14%, 50% 0, 100% 14%, 100% 100%, 0 100%);
 }
 .img {
-  object-position: 50% 62%;
+  object-position: 50% 22%;
 }
 .caption {
   color: var(--soft-on-light);

@@ -2,7 +2,6 @@ import { TextEffects } from "./text-effects";
 import Image from "next/image";
 import { brand } from "@/content/site";
 import { visitMessage, whatsappUrl } from "@/lib/links";
-import { ArrowIcon } from "./icons";
 import { OpenStatus } from "./open-status";
 import styles from "./hero.module.css";
 
@@ -16,9 +15,9 @@ export function Hero() {
         <p className={styles.lede}>{brand.tagline}</p>
         <div className={styles.actions}>
           <a className="btn btn-yellow" href={whatsappUrl(visitMessage)} target="_blank" rel="noopener noreferrer">
-            Conhecer a UP <ArrowIcon /><span className="visually-hidden">(abre o WhatsApp em nova aba)</span>
+            Conhecer a UP <span className="visually-hidden">(abre em nova aba)</span>
           </a>
-          <a className="text-link" href="#planos">Ver planos <ArrowIcon /></a>
+          <a className="text-link" href="#planos">Ver planos</a>
         </div>
         <OpenStatus className={styles.status} />
       </div>

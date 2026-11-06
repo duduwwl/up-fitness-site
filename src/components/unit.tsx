@@ -60,7 +60,7 @@ export function Unit() {
         </Reveal>
 
         <div className={styles.photos}>
-          {[photos.church, photos.fig].map((p, i) => (
+          {[photos.tour, photos.team].map((p, i) => (
             <figure key={p.src} className={i === 0 ? styles.big : styles.small}>
               <div className={`arrow-frame ${styles.frame}`}>
                 <Image

@@ -5,7 +5,7 @@ import styles from "./band.module.css";
 
 /** Full-width photo band between the two halves of the page, cut by the UP arrow. */
 export function Band() {
-  const p = photos.plates;
+  const p = photos.parking;
   return (
     <TextEffects>
     <figure className={styles.band}>

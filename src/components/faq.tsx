@@ -5,7 +5,7 @@ import { Reveal, RevealItem } from "./reveal";
 import styles from "./faq.module.css";
 
 export function Faq() {
-  const p = photos.dumbbells;
+  const p = photos.training;
   return (
     <TextEffects>
     <section id="duvidas" className={`section on-light ${styles.section}`} aria-labelledby="duvidas-title">
