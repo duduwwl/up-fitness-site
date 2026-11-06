@@ -5,7 +5,7 @@ import { Reveal, RevealItem } from "./reveal";
 import styles from "./structure.module.css";
 
 export function Structure() {
-  const primary = photos.training;
+  const primary = photos.dayUse;
   const secondary = photos.team;
   return (
     <TextEffects>

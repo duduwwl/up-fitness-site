@@ -161,6 +161,16 @@ export type Photo = {
 
 // Photos published by the official @upfitness_lavras profile.
 export const photos = {
+  dayUse: {
+    src: "/up-fitness-site/images/instagram-day-use-clean.webp",
+    width: 1121,
+    height: 1403,
+    alt: "Aluna se alongando entre os equipamentos da UP Fitness Zona Sul",
+    caption: "Área de musculação da UP Fitness Zona Sul.",
+    credit: "UP Fitness Lavras",
+    license: "Instagram oficial; arte sobreposta removida para uso no site",
+    page: "https://www.instagram.com/p/Dd4sZpCSoQU/",
+  },
   tour: {
     src: "/up-fitness-site/images/instagram-tour.webp",
     width: 1080,
