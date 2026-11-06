@@ -149,9 +149,15 @@ test("reduced motion keeps every section visible", async ({ browser }) => {
   await ctx.close();
 });
 
-test("open status renders a real state", async ({ page }) => {
+test("hero video is silent, responsive and controllable", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator("#inicio [data-status]")).toContainText(/Aberta agora|Fechada agora/);
+  const video = page.locator("#inicio video");
+  await expect(video).toHaveAttribute("muted", "");
+  await expect(video).toHaveAttribute("loop", "");
+  await expect(video).toHaveAttribute("playsinline", "");
+  await expect(video.locator("source")).toHaveCount(2);
+  await page.getByRole("button", { name: "Pausar vídeo" }).click();
+  await expect(page.getByRole("button", { name: "Reproduzir vídeo" })).toBeVisible();
 });
 
 for (const width of [390, 1440]) {

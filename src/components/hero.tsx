@@ -1,30 +1,65 @@
+"use client";
+
 import { TextEffects } from "./text-effects";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { brand } from "@/content/site";
 import { visitMessage, whatsappUrl } from "@/lib/links";
-import { OpenStatus } from "./open-status";
 import styles from "./hero.module.css";
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(true);
+
+  useEffect(() => {
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    videoRef.current?.pause();
+    setPlaying(false);
+  }, []);
+
+  const toggleVideo = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) void video.play().catch(() => setPlaying(false));
+    else video.pause();
+  };
+
   return (
     <TextEffects>
-    <section id="inicio" className={styles.hero} aria-labelledby="hero-title" aria-describedby="hero-caption">
-      <Image src="/up-fitness-site/images/up-fitness-hero-ai.webp" alt="" fill sizes="100vw" preload className={styles.image} />
-      <div className={`wrap ${styles.intro}`}>
-        <h1 id="hero-title" className={`display ${styles.title}`}>Dê um UP</h1>
-        <p className={styles.lede}>{brand.tagline}</p>
-        <div className={styles.actions}>
-          <a className="btn btn-yellow" href={whatsappUrl(visitMessage)} target="_blank" rel="noopener noreferrer">
-            Conhecer a UP <span className="visually-hidden">(abre em nova aba)</span>
-          </a>
-          <a className="text-link" href="#planos">Ver planos</a>
+      <section id="inicio" className={styles.hero} aria-labelledby="hero-title">
+        <video
+          ref={videoRef}
+          className={styles.video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/up-fitness-site/images/hero-gym-poster.webp"
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <source media="(max-width: 767px)" src="/up-fitness-site/videos/hero-gym-mobile.mp4" type="video/mp4" />
+          <source src="/up-fitness-site/videos/hero-gym.mp4" type="video/mp4" />
+        </video>
+
+        <div className={`wrap ${styles.intro}`}>
+          <h1 id="hero-title" className={`display ${styles.title}`}>Dê um UP</h1>
+          <p className={styles.lede}>{brand.tagline}</p>
+          <div className={styles.actions}>
+            <a className="btn btn-yellow" href={whatsappUrl(visitMessage)} target="_blank" rel="noopener noreferrer">
+              Conhecer a UP <span className="visually-hidden">(abre em nova aba)</span>
+            </a>
+            <a className="text-link" href="#planos">Ver planos</a>
+          </div>
         </div>
-        <OpenStatus className={styles.status} />
-      </div>
-      <p id="hero-caption" className={styles.caption}>Imagem ilustrativa criada com IA. Não retrata a unidade de Lavras.</p>
-    </section>
+
+        <button className={styles.videoControl} type="button" onClick={toggleVideo} aria-label={playing ? "Pausar vídeo" : "Reproduzir vídeo"}>
+          <span className={playing ? styles.pauseIcon : styles.playIcon} aria-hidden="true" />
+          <span>{playing ? "Pausar" : "Reproduzir"}</span>
+        </button>
+      </section>
     </TextEffects>
   );
 }
-
-

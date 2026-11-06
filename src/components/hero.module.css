@@ -7,20 +7,38 @@
   background: var(--black);
   overflow: hidden;
 }
-.image { object-fit: cover; object-position: center; z-index: -2; animation: hero-drift 16s var(--ease) both; }
+.video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -2; }
 .hero::before { content: ""; position: absolute; inset: 0; background: rgb(0 0 0 / .58); z-index: -1; }
-@keyframes hero-drift { from { transform: scale(1.045); } to { transform: scale(1); } }
 .intro { text-align: center; padding-block: clamp(80px, 12vh, 160px); }
 .title { font-size: clamp(5rem, 15.5vw, 15rem); line-height: .95; letter-spacing: -.035em; color: var(--yellow); }
 .lede { max-width: 48ch; margin: 28px auto 0; font-size: clamp(1rem, 1.7vw, 1.35rem); line-height: 1.55; color: var(--white); }
 .actions { display: flex; justify-content: center; align-items: center; gap: 28px; flex-wrap: wrap; margin-top: 32px; }
-.status { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 28px; font-size: var(--t-small); color: var(--white); }
-.caption { position: absolute; bottom: 14px; inset-inline: var(--margin); text-align: center; color: #e1e1dc; font-size: .75rem; line-height: 1.5; }
+.videoControl {
+  position: absolute;
+  right: max(var(--margin), 20px);
+  bottom: max(24px, env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid rgb(255 255 255 / 45%);
+  background: rgb(8 8 8 / 72%);
+  color: var(--white);
+  font-size: .8rem;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+.videoControl:hover { border-color: var(--yellow); color: var(--yellow); }
+.pauseIcon { width: 10px; height: 12px; border-inline: 3px solid currentColor; }
+.playIcon { width: 0; height: 0; border-block: 7px solid transparent; border-left: 11px solid currentColor; }
 @media (max-width: 767px) {
-  .image { object-position: 58% center; }
+  .video { object-position: 58% center; }
   .intro { padding-block: 80px 100px; }
   .title { font-size: clamp(4.2rem, 18vw, 8rem); }
   .lede { max-width: 34ch; margin-top: 24px; }
   .actions { gap: 24px; }
-  .status { max-width: 32ch; margin-inline: auto; }
+  .videoControl { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); }
+  .videoControl span:last-child { display: none; }
 }
