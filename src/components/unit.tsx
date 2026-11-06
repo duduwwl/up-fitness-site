@@ -1,9 +1,7 @@
 import { TextEffects } from "./text-effects";
-import Image from "next/image";
-import { address, contact, holidayHours, hours, mapsUrl, photos } from "@/content/site";
+import { address, contact, holidayHours, hours, mapsUrl } from "@/content/site";
 import { rangeText as range } from "@/lib/hours";
 import { visitMessage, whatsappUrl } from "@/lib/links";
-import { ArrowIcon } from "./icons";
 import { OpenStatus } from "./open-status";
 import { Reveal, RevealItem } from "./reveal";
 import styles from "./unit.module.css";
@@ -31,12 +29,10 @@ export function Unit() {
               <a className="btn btn-yellow" href={mapsUrl} target="_blank" rel="noopener noreferrer">
                 Abrir no Google Maps
                 <span className="visually-hidden">(abre em nova aba)</span>
-                <ArrowIcon />
               </a>
               <a className="text-link" href={whatsappUrl(visitMessage)} target="_blank" rel="noopener noreferrer">
                 WhatsApp {contact.phoneDisplay}
                 <span className="visually-hidden">(abre em nova aba)</span>
-                <ArrowIcon />
               </a>
             </div>
           </RevealItem>
@@ -59,22 +55,11 @@ export function Unit() {
           </RevealItem>
         </Reveal>
 
-        <div className={styles.photos}>
-          {[photos.tour, photos.team].map((p, i) => (
-            <figure key={p.src} className={i === 0 ? styles.big : styles.small}>
-              <div className={`arrow-frame ${styles.frame}`}>
-                <Image
-                  className="photo"
-                  src={p.src}
-                  width={p.width}
-                  height={p.height}
-                  alt={p.alt}
-                  sizes={i === 0 ? "(min-width: 1024px) 40vw, 90vw" : "(min-width: 1024px) 22vw, 50vw"}
-                />
-              </div>
-              <figcaption className="caption soft">{p.caption}</figcaption>
-            </figure>
-          ))}
+        <div className={styles.map}>
+          <iframe title="Localização da UP Fitness Zona Sul em Lavras" loading="lazy"
+            src={`https://maps.google.com/maps?q=${encodeURIComponent("UP Fitness Rua Kennedy Santos 20 Lavras MG")}&output=embed`}
+            referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+          <a href={mapsUrl} target="_blank" rel="noopener noreferrer">Ver rota até a UP <span className="visually-hidden">(abre em nova aba)</span></a>
         </div>
       </div>
     </section>

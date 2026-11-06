@@ -52,9 +52,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href={contact.salesUrl} {...ext}>
+                <a href="#planos">
                   Assinar online
-                  <NewTab />
                 </a>
               </li>
             </ul>

@@ -1,5 +1,6 @@
 import { TextEffects } from "./text-effects";
-import { checkedAt, contact, plans } from "@/content/site";
+import { checkedAt, plans } from "@/content/site";
+import { planSlug } from "@/lib/plans";
 import { Reveal, RevealItem } from "./reveal";
 import styles from "./plans.module.css";
 
@@ -41,23 +42,19 @@ export function Plans() {
                     <h3 className={styles.name}>Plano {plan.name}</h3>
                     {plan.badge && <span className={styles.badge}>{plan.badge}</span>}
                   </div>
-                  <p className={styles.commitment}>{plan.commitment}</p>
                   <div className={styles.price}>
                     <span className={styles.currency}>R$</span>
                     <strong>{plan.price}</strong>
-                    {plan.name === "Econômico" && <span className={styles.perMonth}>/mês</span>}
+                    <span className={styles.perMonth}>/mês</span>
                   </div>
                   <p className={styles.schedule}>{plan.schedule}</p>
 
                   <a
                     className={styles.cta}
                     data-ui
-                    href={contact.salesUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`/up-fitness-site/contratacao/?plano=${planSlug(plan.name)}`}
                   >
                     Escolher plano {plan.name}
-                    <span className="visually-hidden"> na página oficial de vendas (abre em nova aba)</span>
                   </a>
 
                   <p className={styles.includes}>Inclui</p>

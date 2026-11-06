@@ -1,0 +1,28 @@
+.page { min-height: 100svh; background: #f2f1ec; color: #121212; padding-bottom: 64px; }
+.header { padding: 24px max(5vw, 20px); display: flex; justify-content: space-between; gap: 20px; background: #101010; color: #ffce00; }
+.header a { font-weight: 800; text-decoration: none; }
+.notice { background: #ffce00; padding: 12px 20px; text-align: center; font-size: .85rem; }
+.grid { max-width: 1200px; margin: 56px auto; padding: 0 24px; display: grid; gap: 32px; }
+.content, .summary { min-width: 0; }
+.content h1 { font-family: var(--display); font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1; text-transform: uppercase; margin: 14px 0 30px; }
+.content h2 { margin: 24px 0 16px; font-size: 1.4rem; }
+.eyebrow { font-size: .75rem; letter-spacing: .16em; font-weight: 700; }
+.steps { display: flex; flex-wrap: wrap; gap: 20px; list-style: none; border-bottom: 1px solid #ccc; padding-bottom: 20px; font-size: .85rem; }
+.steps [aria-current] { font-weight: 800; }
+.options { display: grid; gap: 12px; margin: 20px 0; }
+.options button { border: 2px solid #d6d4ce; border-radius: 12px; padding: 18px; display: flex; flex-wrap: wrap; gap: 8px 20px; text-align: left; background: #fff; cursor: pointer; }
+.options button[aria-pressed=true] { border-color: #121212; background: #ffce00; }
+.options small { width: 100%; }
+.primary { display: inline-flex; justify-content: center; align-items: center; background: #101010; color: #fff; border-radius: 8px; padding: 18px 28px; min-height: 54px; text-decoration: none; margin: 20px 12px 20px 0; font-weight: 700; cursor: pointer; }
+.primary:disabled { opacity: .4; cursor: not-allowed; }
+.content label { display: grid; gap: 8px; margin-top: 20px; font-weight: 600; }
+.content input { width: 100%; border: 1px solid #aaa; border-radius: 8px; padding: 14px; background: white; color: #111; font: inherit; }
+.summary { background: #fff; border-top: 6px solid #ffce00; padding: 30px; border-radius: 12px; align-self: start; }
+.summary h2 { margin: 24px 0; font-size: 1.7rem; }
+.price { display: block; font-family: var(--display); font-size: 3.5rem; }
+.price small { font-family: var(--text); font-size: 1rem; }
+.summary ul { list-style: none; display: grid; gap: 12px; margin: 30px 0; }
+.hint { font-size: .8rem; color: #555; margin-top: 20px; }
+.payment { padding: 28px; border-radius: 16px; background: #fff; border: 1px solid #ddd; display: grid; gap: 20px; overflow-wrap: anywhere; }
+.payment small { display: block; }
+@media(min-width: 900px) { .grid { grid-template-columns: 1.4fr 1fr; gap: 64px; } .summary { position: sticky; top: 32px; } }

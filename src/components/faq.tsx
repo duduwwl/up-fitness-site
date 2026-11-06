@@ -5,7 +5,7 @@ import { Reveal, RevealItem } from "./reveal";
 import styles from "./faq.module.css";
 
 export function Faq() {
-  const p = photos.training;
+  const p = photos.team;
   return (
     <TextEffects>
     <section id="duvidas" className={`section on-light ${styles.section}`} aria-labelledby="duvidas-title">
@@ -15,7 +15,7 @@ export function Faq() {
             Dúvidas frequentes
           </h2>
           <figure className={styles.figure}>
-            <div className={`arrow-frame ${styles.frame}`}>
+            <div className={styles.frame}>
               <Image
                 className="photo"
                 src={p.src}
@@ -25,7 +25,6 @@ export function Faq() {
                 sizes="(min-width: 1024px) 28vw, 60vw"
               />
             </div>
-            <figcaption className="caption soft">{p.caption}</figcaption>
           </figure>
         </div>
 

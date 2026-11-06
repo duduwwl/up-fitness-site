@@ -1,6 +1,10 @@
 .section {
   background: var(--ground-3);
 }
+.map { min-width: 0; overflow: hidden; border: 1px solid #ffffff20; border-radius: 16px; }
+.map iframe { width: 100%; height: clamp(360px, 48vw, 620px); display: block; border: 0; }
+.map a { display: block; padding: 20px; background: var(--yellow); color: #111; font-weight: 600; }
+@media(min-width: 1024px) { .map { grid-column: 7 / span 6; position: sticky; top: 110px; } }
 
 .grid {
   display: grid;

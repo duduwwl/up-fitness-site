@@ -5,7 +5,9 @@ import { AnimatePresence, m } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { whatsappUrl, visitMessage } from "@/lib/links";
 import { navItems } from "@/lib/nav";
-import { ArrowIcon, Logo } from "./icons";
+import { Logo } from "./icons";
+import { contact } from "@/content/site";
+import { SocialIcon } from "./social-icon";
 import styles from "./header.module.css";
 
 export function Header() {
@@ -55,9 +57,9 @@ export function Header() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          WhatsApp <span className="visually-hidden">(abre em nova aba)</span>
-          <ArrowIcon />
+          <SocialIcon kind="whatsapp" /><span className="visually-hidden">WhatsApp (abre em nova aba)</span>
         </a>
+        <a className={styles.social} href={contact.instagramUnit} target="_blank" rel="noopener noreferrer"><SocialIcon kind="instagram" /><span className="visually-hidden">Instagram (abre em nova aba)</span></a>
 
         <button
           ref={toggleRef}
@@ -102,7 +104,6 @@ export function Header() {
                   onClick={() => setOpen(false)}
                 >
                   WhatsApp <span className="visually-hidden">(abre em nova aba)</span>
-                  <ArrowIcon />
                 </a>
               </li>
             </ul>

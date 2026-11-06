@@ -13,7 +13,7 @@ export function Structure() {
       <div className={`wrap ${styles.grid}`}>
         <Reveal className={styles.media}>
           <RevealItem scale as="figure" className={styles.figure}>
-            <div className={`arrow-frame ${styles.frame}`}>
+            <div className={styles.frame}>
               <Image
                 className={`photo ${styles.img}`}
                 src={primary.src}
@@ -26,7 +26,7 @@ export function Structure() {
             <figcaption className="visually-hidden">{primary.caption}</figcaption>
           </RevealItem>
           <RevealItem scale as="figure" className={styles.secondary}>
-            <div className={`arrow-frame ${styles.secondaryFrame}`}>
+            <div className={styles.secondaryFrame}>
               <Image
                 className="photo"
                 src={secondary.src}

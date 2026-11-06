@@ -2,6 +2,10 @@
   background: var(--ground-2);
   overflow: hidden;
 }
+.point { border-top: 1px solid #ffffff25; padding-top: 16px; }
+.pointTitle { color: var(--yellow); }
+.point p { font-size: .95rem; }
+.frame, .secondaryFrame { overflow: hidden; border-radius: 12px; }
 
 .grid {
   display: grid;
@@ -107,3 +111,10 @@
     row-gap: 44px;
   }
 }
+.media { display: grid; gap: 18px; padding-bottom: 0; }
+.secondary { position: static; width: 65%; justify-self: end; margin-top: -30px; border: 8px solid var(--ground-2); border-radius: 16px; }
+.secondaryFrame { aspect-ratio: 3 / 2; }
+.secondary :global(img) { object-position: center 40%; }
+.points { margin-top: 32px; gap: 20px; }
+.point p { padding-left: 0; }
+.pointTitle :global(.bullet) { display: none; }

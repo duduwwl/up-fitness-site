@@ -19,7 +19,6 @@ export function Band() {
           sizes="100vw"
         />
       </div>
-      <figcaption className={`wrap caption soft ${styles.caption}`}>{p.caption}</figcaption>
     </figure>
     </TextEffects>
   );

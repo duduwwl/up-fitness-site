@@ -74,6 +74,11 @@
 .best { border-color: var(--black); background: var(--black); color: var(--white); }
 .best .badge { background: var(--yellow); color: var(--black); }
 .note { max-width: 86ch; margin-top: 28px; }
+.tile, .economic, .best { border: 2px solid var(--yellow); background: #fff; color: var(--black); }
+.tile:hover, .tile:focus-within, .tile:active { background: var(--yellow); }
+.economic .cta, .best .cta, .cta { background: var(--black); color: #fff; }
+.tile .cta:hover { background: #303030; }
+.price { margin-top: 24px; }
 @media (min-width: 720px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1120px) { .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (prefers-reduced-motion: reduce) { .tile, .cta { transition: none; } }

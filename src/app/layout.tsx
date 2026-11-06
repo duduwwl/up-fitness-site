@@ -4,6 +4,7 @@ import { MotionRoot } from "@/components/reveal";
 import { hours } from "@/content/site";
 import { rangeText } from "@/lib/hours";
 import "./globals.css";
+import { BrandOpening } from "@/components/brand-opening";
 
 const display = Barlow_Condensed({
   variable: "--font-display",
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className={`${display.variable} ${text.variable}`}>
       <body>
+        <BrandOpening />
         <a href="#conteudo" className="skip-link">
           Pular para o conteúdo
         </a>

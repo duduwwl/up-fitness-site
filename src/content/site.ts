@@ -68,7 +68,7 @@ export const plans: Plan[] = [
     price: "89,90",
     commitment: "Mensal",
     schedule: "Treino das 12h às 16h",
-    features: ["Acesso à unidade Zona Sul", "Musculação nos dois andares", "Ambiente climatizado"],
+    features: ["Acesso das 12h às 16h", "Musculação nos dois andares", "Ambiente climatizado", "Equipamentos importados"],
     badge: "Menor mensalidade",
   },
   {
@@ -76,28 +76,28 @@ export const plans: Plan[] = [
     price: "179,90",
     commitment: "2 parcelas, 2 meses",
     schedule: "Horário livre",
-    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados"],
+    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados", "Ambiente climatizado"],
   },
   {
     name: "Trimestral",
     price: "169,90",
     commitment: "3 parcelas, 3 meses",
     schedule: "Horário livre",
-    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados"],
+    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados", "Ambiente climatizado"],
   },
   {
     name: "Semestral",
     price: "159,90",
     commitment: "6 parcelas, 6 meses",
     schedule: "Horário livre",
-    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados"],
+    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados", "Ambiente climatizado"],
   },
   {
     name: "Anual",
     price: "149,90",
     commitment: "12 parcelas, 12 meses",
     schedule: "Horário livre",
-    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Melhor valor no horário livre"],
+    features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados", "Ambiente climatizado"],
     badge: "Melhor custo-benefício",
   },
 ];
@@ -112,7 +112,7 @@ export const amenities = [
   { title: "Área kids", text: "Um canto para as crianças enquanto você treina." },
   { title: "Armários e bebedouro", text: "Guarde suas coisas e se hidrate sem sair do treino." },
   { title: "Gympass e TotalPass", text: "Os dois benefícios corporativos são aceitos na unidade." },
-  { title: "Horário livre", text: "Todos os planos liberam qualquer horário de funcionamento." },
+  { title: "Seu horário", text: "Econômico das 12h às 16h. Demais planos com horário livre." },
 ];
 
 export type Faq = { q: string; a: string };
@@ -132,7 +132,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Posso assinar pela internet?",
-    a: "Sim. A página oficial de vendas da unidade permite escolher o plano e preencher o cadastro online.",
+    a: "Você pode experimentar a escolha do plano e o cadastro aqui no site. O pagamento é demonstrativo: nenhuma matrícula ou cobrança será realizada. Para contratar de verdade, fale com a unidade.",
   },
   {
     q: "A UP aceita Gympass e TotalPass?",
@@ -182,13 +182,13 @@ export const photos = {
     page: "https://www.instagram.com/reel/DdRS6LAx-dT/",
   },
   parking: {
-    src: "/up-fitness-site/images/instagram-estacionamento.webp",
-    width: 1080,
-    height: 1344,
+    src: "/up-fitness-site/images/up-facade-clean.webp",
+    width: 1672,
+    height: 941,
     alt: "Fachada e estacionamento da UP Fitness Zona Sul",
     caption: "Fachada e estacionamento da unidade.",
     credit: "UP Fitness Lavras",
-    license: "Instagram oficial",
+    license: "Instagram oficial; edição assistida por IA para remover arte promocional",
     page: "https://www.instagram.com/p/DfFEsozRnQF/",
   },
   training: {
