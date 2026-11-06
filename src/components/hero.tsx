@@ -13,7 +13,6 @@ export function Hero() {
   useEffect(() => {
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     videoRef.current?.pause();
-    setPlaying(false);
   }, []);
 
   const toggleVideo = () => {
