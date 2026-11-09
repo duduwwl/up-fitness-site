@@ -1,3 +1,5 @@
+import { sitePath } from "@/lib/paths";
+
 // Single source of truth for every business fact on the site.
 // Each block names its public source and the date it was checked (2026-10-29).
 // Anything not confirmed lives in `pending` and is NOT rendered as fact.
@@ -132,7 +134,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Posso assinar pela internet?",
-    a: "Você pode experimentar a escolha do plano e o cadastro aqui no site. O pagamento é demonstrativo: nenhuma matrícula ou cobrança será realizada. Para contratar de verdade, fale com a unidade.",
+    a: "Você pode escolher o plano e enviar seu interesse à academia. O pagamento é demonstrativo: nenhuma matrícula ou cobrança será realizada. O pedido fica guardado por até 180 dias e pode ser exportado ou excluído com o código recebido.",
   },
   {
     q: "A UP aceita Gympass e TotalPass?",
@@ -162,7 +164,7 @@ export type Photo = {
 // Photos published by the official @upfitness_lavras profile.
 export const photos = {
   dayUse: {
-    src: "/up-fitness-site/images/instagram-day-use-clean.webp",
+    src: sitePath("/images/instagram-day-use-clean.webp"),
     width: 1121,
     height: 1403,
     alt: "Aluna se alongando entre os equipamentos da UP Fitness Zona Sul",
@@ -172,7 +174,7 @@ export const photos = {
     page: "https://www.instagram.com/p/Dd4sZpCSoQU/",
   },
   tour: {
-    src: "/up-fitness-site/images/instagram-tour.webp",
+    src: sitePath("/images/instagram-tour.webp"),
     width: 1080,
     height: 1917,
     alt: "Fachada da UP Fitness Zona Sul e aluna em frente à unidade",
@@ -182,7 +184,7 @@ export const photos = {
     page: "https://www.instagram.com/reel/DdRS6LAx-dT/",
   },
   parking: {
-    src: "/up-fitness-site/images/up-facade-clean.webp",
+    src: sitePath("/images/up-facade-clean.webp"),
     width: 1672,
     height: 941,
     alt: "Fachada e estacionamento da UP Fitness Zona Sul",
@@ -192,7 +194,7 @@ export const photos = {
     page: "https://www.instagram.com/p/DfFEsozRnQF/",
   },
   training: {
-    src: "/up-fitness-site/images/instagram-treino.webp",
+    src: sitePath("/images/instagram-treino.webp"),
     width: 720,
     height: 1280,
     alt: "Aluna treinando na esteira dentro da UP Fitness Zona Sul",
@@ -202,7 +204,7 @@ export const photos = {
     page: "https://www.instagram.com/reel/De2Sp1Xy_Ij/",
   },
   team: {
-    src: "/up-fitness-site/images/instagram-estrutura.webp",
+    src: sitePath("/images/instagram-estrutura.webp"),
     width: 1080,
     height: 1918,
     alt: "Equipe da UP Fitness dentro da academia Zona Sul",

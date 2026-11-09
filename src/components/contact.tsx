@@ -62,7 +62,7 @@ export function Contact() {
             </h2>
             <p className={styles.note}>
               Preencha e o WhatsApp abre com a mensagem pronta para a equipe da UP. O site não
-              guarda nenhum dado. Prefere ligar ou chamar direto? {contact.phoneDisplay}.
+              guarda os dados deste formulário. Prefere ligar ou chamar direto? {contact.phoneDisplay}.
             </p>
           </div>
 

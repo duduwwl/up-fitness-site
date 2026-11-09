@@ -29,14 +29,15 @@ test("checkout completes both simulated payment methods", async ({ page }) => {
     await expect(page.getByRole("heading", { name: "Plano Econômico" })).toBeVisible();
     await page.getByRole("button", { name: "Continuar", exact: true }).click();
     await expect(page.getByRole("heading", { level: 1 })).toBeFocused();
-    await page.getByLabel("Nome fictício").fill("Pessoa Teste");
-    await page.getByLabel("E-mail de exemplo").fill("teste@example.com");
-    await page.getByLabel("Telefone de exemplo").fill("35999999999");
+    await page.getByLabel("Nome completo").fill("Pessoa Teste");
+    await page.getByLabel("E-mail", { exact: true }).fill("teste@example.com");
+    await page.getByLabel("Telefone com DDD").fill("35999999999");
+    await page.getByRole("checkbox").check();
     await page.getByRole("button", { name: "Ir para pagamento" }).click();
     await page.getByRole("button", { name: method, exact: true }).click();
     await expect(page.locator('input[name="card"], input[name="cvv"]')).toHaveCount(0);
-    await page.getByRole("button", { name: "Simular confirmação" }).click();
-    await expect(page.getByRole("status")).toContainText("Simulação concluída");
+    await page.getByRole("button", { name: "Enviar pedido demonstrativo" }).click();
+    await expect(page.getByRole("status")).toContainText("Solicitação enviada");
   }
 });
 
@@ -53,8 +54,12 @@ for (const width of widths) {
     await expect(page.getByRole("button", { name: "Continuar", exact: true })).toBeDisabled();
     await page.getByRole("button", { name: /Econômico R/ }).click();
     await page.getByRole("button", { name: "Continuar", exact: true }).click();
+    await page.getByLabel("Nome completo").fill("Pessoa Teste");
+    await page.getByLabel("E-mail", { exact: true }).fill("teste@example.com");
+    await page.getByLabel("Telefone com DDD").fill("35999999999");
+    await page.getByRole("checkbox").check();
     await page.getByRole("button", { name: "Ir para pagamento" }).click();
-    await expect(page.getByLabel("Nome fictício")).toBeFocused();
+    await expect(page.getByRole("heading", { name: "Como você prefere pagar?" })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
     expect(results.violations.map((v) => v.id)).toEqual([]);
@@ -109,6 +114,42 @@ test("no console errors, failed requests or broken images", async ({ page }) => 
   );
   expect(broken).toEqual([]);
   expect(errors).toEqual([]);
+});
+
+test("security headers and hostile API input are rejected", async ({ request }) => {
+  const page = await request.get("/");
+  expect(page.headers()["content-security-policy"]).toContain("frame-ancestors 'none'");
+  expect(page.headers()["x-content-type-options"]).toBe("nosniff");
+
+  const rejectedOrigin = await request.post("/api/membership-requests/", {
+    headers: { origin: "https://evil.example" },
+    data: {},
+  });
+  expect(rejectedOrigin.status()).toBe(403);
+
+  const rejectedFields = await request.post("/api/membership-requests/", {
+    data: { planSlug: "economico", extra: "unexpected" },
+  });
+  expect(rejectedFields.status()).toBe(422);
+});
+
+test("privacy page exports and deletes with management credentials", async ({ page }) => {
+  await page.route("**/api/privacy/export/", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({ data: { id: "00000000-0000-4000-8000-000000000001", full_name: "Pessoa Teste" } }),
+  }));
+  await page.route("**/api/privacy/delete/", (route) => route.fulfill({ status: 204, body: "" }));
+  await page.goto("/privacidade/");
+  await page.getByLabel("ID da solicitação").fill("00000000-0000-4000-8000-000000000001");
+  await page.getByLabel("Código de gestão").fill("management-code-with-at-least-32-characters");
+  const download = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Exportar meus dados" }).click();
+  await download;
+  await expect(page.getByRole("status")).toHaveText("Arquivo exportado.");
+  page.once("dialog", (dialog) => dialog.accept());
+  await page.getByRole("button", { name: "Excluir meus dados" }).click();
+  await expect(page.getByRole("status")).toHaveText("Dados excluídos.");
 });
 
 test("official media stays sharp and relevant", async ({ page }) => {
