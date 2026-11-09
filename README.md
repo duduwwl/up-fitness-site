@@ -1,6 +1,6 @@
 # UP Fitness Zona Sul — site
 
-Site institucional da academia UP Fitness Zona Sul (Lavras/MG): estrutura, planos, horários com status "aberta agora", endereço, dúvidas e contato pelo WhatsApp.
+Site institucional da academia UP Fitness Zona Sul (Lavras/MG), com pedido demonstrativo de matrícula persistido no Supabase e execução server-side na Vercel.
 
 ## Rodar
 
@@ -26,6 +26,13 @@ Verificação completa (lint, tipos, testes unitários e build):
 pnpm check
 ```
 
+Banco local (requer Docker):
+
+```bash
+pnpm db:start
+pnpm db:check
+```
+
 Testes E2E no Microsoft Edge instalado (rode `pnpm build` antes):
 
 ```bash
@@ -45,12 +52,10 @@ Todos os dados comerciais (preços, horários, endereço, contatos, fotos e cré
 - [docs/onboarding.md](docs/onboarding.md): preparação local.
 - [docs/quality.md](docs/quality.md): verificações e medições.
 - [docs/setup.md](docs/setup.md): versões, fontes e evidências do setup.
-
-## Próxima entrega
-
-Trocar as imagens ilustrativas por fotos autorizadas da unidade e o logo oficial em vetor.
+- [docs/data-security.md](docs/data-security.md): dados, RLS, papéis, STRIDE, LGPD e OWASP.
+- [docs/operations.md](docs/operations.md): ambientes, backup, migração, rotação e rollback.
 
 ## Publicação
-GitHub Pages: https://duduwwl.github.io/up-fitness-site/
-Build estático em out/; basePath /up-fitness-site. Atualizações na main publicam automaticamente.
+
+O runtime alvo é Vercel porque os endpoints protegidos não funcionam em exportação estática. O deployment antigo do GitHub Pages permanece apenas como versão legada até a URL Vercel ser validada.
 
