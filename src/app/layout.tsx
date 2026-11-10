@@ -5,6 +5,7 @@ import { hours } from "@/content/site";
 import { rangeText } from "@/lib/hours";
 import "./globals.css";
 import { BrandOpening } from "@/components/brand-opening";
+import { CookieNotice } from "@/components/cookie-notice";
 
 const display = Barlow_Condensed({
   variable: "--font-display",
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         <MotionRoot>{children}</MotionRoot>
+        <CookieNotice />
       </body>
     </html>
   );

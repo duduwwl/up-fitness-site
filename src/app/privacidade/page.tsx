@@ -10,6 +10,8 @@ export default function PrivacyPage() {
         <p className={styles.eyebrow}>PRIVACIDADE</p><h1>Seus dados, suas escolhas.</h1>
         <p>Guardamos nome, e-mail, telefone, plano, forma de pagamento demonstrativa e consentimento para responder ao pedido.</p>
         <p>Não coletamos CPF, senha ou dados de cartão. Os dados expiram em 180 dias. O código entregue após o envio permite exportação e exclusão imediata.</p>
+        <h2>Cookies e armazenamento</h2>
+        <p>Este site não usa cookies de publicidade nem de rastreamento. Guardamos no seu navegador apenas preferências essenciais: a abertura já vista e o aviso de cookies. O mapa do Google e a verificação Cloudflare Turnstile são serviços de terceiros e podem definir cookies próprios.</p>
         <h2>Gerenciar uma solicitação</h2><PrivacyManager />
       </section>
       <aside className={styles.summary}><h2>Finalidade e acesso</h2><p>Somente a equipe autorizada usa os dados para responder ao interesse na matrícula.</p><p>Supabase hospeda o banco. Vercel executa o endpoint. Cloudflare Turnstile ajuda a bloquear abuso.</p><p>Para correção ou dúvidas, fale pelo WhatsApp oficial.</p></aside>
