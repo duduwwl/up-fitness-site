@@ -60,7 +60,7 @@ Node 24.22.1 · pnpm 12.15.0 (`packageManager`) · Next 16.4.3 · React 19.3.0 �
 Sem publicação, push, deploy, compra de serviço, hooks de Git ou proteções de branch.
 
 ## GitHub Pages
-Exportação estática com basePath /up-fitness-site e imagens sem otimizador de servidor. O workflow pages.yml valida e publica out/.
+O runtime usa Vercel para suportar Route Handlers. O workflow valida qualidade no GitHub; publicação exige preview e promoção manual após configurar Supabase e Turnstile.
 
 
 Hero: public/images/up-fitness-hero-ai.png, gerado pela ferramenta nativa Imagegen com referência fornecida pelo usuário. Prompt: fotografia editorial panorâmica de academia brasileira, equipamentos pretos com detalhes amarelos #ffcb05, luz natural, pessoas treinando, identidade UP Fitness, sem alegar retratar a unidade real. Manter aviso de ilustração.

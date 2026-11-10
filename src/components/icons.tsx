@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { sitePath } from "@/lib/paths";
 
 /** Diagonal arrow for external and forward links. Decorative: the link text carries the meaning. */
 export function ArrowIcon() {
@@ -24,7 +25,7 @@ export function Logo() {
   return (
     <span className="logo">
       <span className="logo-disc">
-        <Image src="/up-fitness-site/images/instagram-logo.webp" width={40} height={40} alt="" style={{ borderRadius: "50%" }} />
+        <Image src={sitePath("/images/instagram-logo.webp")} width={40} height={40} alt="" style={{ borderRadius: "50%" }} />
       </span>
       <span className="logo-text" translate="no">
         UP <span>Fitness</span>

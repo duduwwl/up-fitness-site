@@ -3,6 +3,7 @@ import Image from "next/image";
 import { address, checkedAt, contact, mapsUrl } from "@/content/site";
 import { visitMessage, whatsappUrl } from "@/lib/links";
 import { navItems } from "@/lib/nav";
+import { sitePath } from "@/lib/paths";
 import styles from "./footer.module.css";
 
 const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
@@ -18,7 +19,7 @@ export function Footer() {
         <a className={styles.logoLink} href="#inicio" aria-label="UP Fitness — voltar ao início">
           <Image
             className={styles.logo}
-            src="/up-fitness-site/images/instagram-logo.webp"
+            src={sitePath("/images/instagram-logo.webp")}
             width={320}
             height={320}
             alt="UP Fitness"
@@ -56,6 +57,7 @@ export function Footer() {
                   Assinar online
                 </a>
               </li>
+              <li><a href={sitePath("/privacidade/")}>Privacidade</a></li>
             </ul>
           </div>
           <div>

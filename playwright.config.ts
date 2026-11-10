@@ -1,6 +1,6 @@
 import { defineConfig } from "@playwright/test";
 
-// Runs against the production build (`pnpm build` first).
+// Runs against the production server build (`pnpm build` first).
 // Uses the locally installed Microsoft Edge (Chromium); Firefox/WebKit need `playwright install`.
 const PORT = 3108;
 
@@ -15,8 +15,13 @@ export default defineConfig({
     timezoneId: "America/Sao_Paulo",
   },
   webServer: {
-    command: `node scripts/serve-export.mjs ${PORT}`,
+    command: `pnpm exec next start -p ${PORT}`,
     url: `http://localhost:${PORT}`,
+    env: {
+      E2E_MOCK_SUBMISSIONS: "true",
+      RATE_LIMIT_HMAC_SECRET: "e2e-only-secret-with-at-least-thirty-two-characters",
+      ALLOWED_ORIGINS: `http://localhost:${PORT}`,
+    },
     reuseExistingServer: false,
     timeout: 60_000,
   },

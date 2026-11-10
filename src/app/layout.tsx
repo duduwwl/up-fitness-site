@@ -5,6 +5,7 @@ import { hours } from "@/content/site";
 import { rangeText } from "@/lib/hours";
 import "./globals.css";
 import { BrandOpening } from "@/components/brand-opening";
+import { CookieNotice } from "@/components/cookie-notice";
 
 const display = Barlow_Condensed({
   variable: "--font-display",
@@ -22,7 +23,7 @@ const weekday = hours[0];
 const description = `Academia de musculação na Zona Sul de Lavras (MG): dois andares climatizados, equipamentos importados, aberta de ${weekday.label.toLowerCase()} das ${rangeText(weekday.open, weekday.close)}. Planos com horário livre.`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://duduwwl.github.io/up-fitness-site/"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: "UP Fitness Zona Sul | Academia em Lavras, MG",
   description,
   applicationName: "UP Fitness",
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         <MotionRoot>{children}</MotionRoot>
+        <CookieNotice />
       </body>
     </html>
   );
