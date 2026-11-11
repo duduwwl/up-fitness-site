@@ -38,7 +38,17 @@ export function requestFingerprint(request: Request) {
 export async function verifyTurnstile(token: string, request: Request) {
   if (process.env.E2E_MOCK_SUBMISSIONS === "true" && !process.env.VERCEL) return;
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret || !token) throw new RequestError(400, "Confirme que você não é um robô.");
+  // Graceful degradation: with TURNSTILE_OPTIONAL enabled, a missing token is
+  // allowed and the remaining layers (same-origin, honeypot, rate limiting,
+  // validation) carry the protection. A token that IS supplied is still
+  // verified, so full coverage auto-restores when the widget renders reliably.
+  // Remove TURNSTILE_OPTIONAL to require the challenge again.
+  const optional = process.env.TURNSTILE_OPTIONAL === "true";
+  if (!secret) throw new RequestError(503, "Serviço temporariamente indisponível.");
+  if (!token) {
+    if (optional) return;
+    throw new RequestError(400, "Confirme que você não é um robô.");
+  }
   const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
     method: "POST",
     headers: { "content-type": "application/json" },
