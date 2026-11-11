@@ -37,6 +37,66 @@ export type Database = {
         Update: Partial<Database["public"]["Tables"]["membership_requests"]["Insert"]>;
         Relationships: [];
       };
+      payments: {
+        Row: {
+          id: string;
+          membership_request_id: string | null;
+          provider: string;
+          provider_order_id: string | null;
+          provider_charge_id: string | null;
+          method: string;
+          amount_cents: number;
+          currency: string;
+          status: string;
+          pix_qr_code: string | null;
+          pix_qr_code_url: string | null;
+          pix_expires_at: string | null;
+          paid_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          membership_request_id?: string | null;
+          provider?: string;
+          provider_order_id?: string | null;
+          provider_charge_id?: string | null;
+          method: string;
+          amount_cents: number;
+          currency?: string;
+          status?: string;
+          pix_qr_code?: string | null;
+          pix_qr_code_url?: string | null;
+          pix_expires_at?: string | null;
+          paid_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["payments"]["Insert"]>;
+        Relationships: [];
+      };
+      payment_events: {
+        Row: {
+          id: string;
+          provider: string;
+          event_id: string;
+          event_type: string | null;
+          payment_id: string | null;
+          payload: Json | null;
+          received_at: string;
+        };
+        Insert: {
+          id?: string;
+          provider?: string;
+          event_id: string;
+          event_type?: string | null;
+          payment_id?: string | null;
+          payload?: Json | null;
+          received_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["payment_events"]["Insert"]>;
+        Relationships: [];
+      };
     };
     Views: Record<never, never>;
     Functions: {

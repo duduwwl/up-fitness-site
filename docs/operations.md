@@ -12,6 +12,10 @@ Na Vercel, cadastre variáveis somente no ambiente correspondente. `SUPABASE_ENV
 
 Variáveis públicas: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY`. Variáveis server-only: `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `SUPABASE_ENVIRONMENT`, `RATE_LIMIT_HMAC_SECRET`, `TURNSTILE_SECRET_KEY`, `ALLOWED_ORIGINS`.
 
+`TURNSTILE_OPTIONAL=true` (opcional) libera o envio do formulário quando o widget Turnstile não renderiza, mantendo rate limit, honeypot e verificação de origem. Remova para voltar a exigir o desafio.
+
+Pagamentos online (Stone/Pagar.me) vêm como scaffold **desligado**: `PAYMENTS_ENABLED`, `STONE_API_KEY`, `STONE_PUBLIC_KEY`, `STONE_WEBHOOK_SECRET`, `STONE_API_BASE_URL`. Guia de ativação em `docs/payments-stone.md`.
+
 ## Desenvolvimento e migração
 
 ```bash
