@@ -13,13 +13,20 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "db:start": "supabase start",
+    "db:reset": "supabase db reset",
+    "db:test": "supabase test db",
+    "db:types": "supabase gen types typescript --local > src/lib/database.generated.ts",
+    "db:check": "pnpm db:reset && pnpm db:test && pnpm db:types",
     "check": "pnpm lint && pnpm typecheck && pnpm lint:typed && pnpm lint:rules && pnpm test && pnpm build"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
     "motion": "14.8.0",
     "next": "16.4.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
@@ -30,6 +37,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
+    "supabase": "^3.0.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "typescript-eslint": "^8.72.1",

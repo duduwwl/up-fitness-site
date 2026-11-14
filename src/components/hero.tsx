@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { brand } from "@/content/site";
 import { visitMessage, whatsappUrl } from "@/lib/links";
 import styles from "./hero.module.css";
+import { sitePath } from "@/lib/paths";
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -33,14 +34,14 @@ export function Hero() {
           loop
           playsInline
           preload="metadata"
-          poster="/up-fitness-site/images/hero-gym-poster.webp"
+          poster={sitePath("/images/hero-gym-poster.webp")}
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
           aria-hidden="true"
           tabIndex={-1}
         >
-          <source media="(max-width: 767px)" src="/up-fitness-site/videos/hero-gym-mobile.mp4" type="video/mp4" />
-          <source src="/up-fitness-site/videos/hero-gym.mp4" type="video/mp4" />
+          <source media="(max-width: 767px)" src={sitePath("/videos/hero-gym-mobile.mp4")} type="video/mp4" />
+          <source src={sitePath("/videos/hero-gym.mp4")} type="video/mp4" />
         </video>
 
         <div className={`wrap ${styles.intro}`}>

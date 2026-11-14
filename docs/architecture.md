@@ -9,6 +9,12 @@
 - Testes: Vitest 5 (unitário, Node) e Playwright 1.64 + axe-core (E2E).
 - Gerenciador: pnpm 12 com `nodeLinker: hoisted` (`pnpm-workspace.yaml`) para encurtar caminhos no Windows.
 
+## Runtime e dados
+
+O site usa Next.js App Router na Vercel. Páginas públicas são pré-renderizadas; três Route Handlers processam pedido, exportação e exclusão. Supabase é acessado somente no servidor com chave secreta. O navegador nunca recebe chave Supabase.
+
+O schema versionado fica em `supabase/migrations`. Consulte `data-security.md` para modelo, RLS e threat model.
+
 ## Mapa do código
 
 ```

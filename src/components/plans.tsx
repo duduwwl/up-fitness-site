@@ -1,6 +1,7 @@
 import { TextEffects } from "./text-effects";
 import { checkedAt, plans } from "@/content/site";
 import { planSlug } from "@/lib/plans";
+import { sitePath } from "@/lib/paths";
 import { Reveal, RevealItem } from "./reveal";
 import styles from "./plans.module.css";
 
@@ -52,7 +53,7 @@ export function Plans() {
                   <a
                     className={styles.cta}
                     data-ui
-                    href={`/up-fitness-site/contratacao/?plano=${planSlug(plan.name)}`}
+                    href={sitePath(`/contratacao/?plano=${planSlug(plan.name)}`)}
                   >
                     Escolher plano {plan.name}
                   </a>

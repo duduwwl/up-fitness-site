@@ -1,0 +1,2 @@
+-- No seed rows are required. Production content remains versioned in src/content/site.ts.
+-- Tests create fictitious, disposable records inside transactions.

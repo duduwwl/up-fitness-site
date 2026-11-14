@@ -29,6 +29,9 @@ export default defineConfig([
     ".codex/**",
     "graphify-out/**",
     "work/**",
+    ".worktrees/**",
+    "test-results/**",
+    "playwright-report/**",
   ]),
 ]);
 
