@@ -213,6 +213,91 @@ export const photos = {
   },
 } satisfies Record<string, Photo>;
 
+
+// Áreas da academia — fotos publicadas pela unidade (enviadas pelo cliente, 2026-11-17).
+export type AreaPhoto = { src: string; width: number; height: number; alt: string };
+
+export type Area = {
+  id: string;
+  label: string;
+  title: string;
+  intro: string;
+  points: { title: string; text: string }[];
+  photos: AreaPhoto[];
+};
+
+export const areas: Area[] = [
+  {
+    id: "kids",
+    label: "Área Kids",
+    title: "Área Kids",
+    intro:
+      "Um espaço pensado para as crianças enquanto você treina: brinquedos, mesas para atividades e um ambiente colorido e seguro, dentro da unidade.",
+    points: [
+      { title: "Sempre acompanhada", text: "A área fica dentro da academia, de vista do piso de treino — pergunte as regras de uso pelo WhatsApp." },
+      { title: "Feita para brincar", text: "Tenda, jogos de chão, mesas e cadeiras no tamanho deles e paredes ilustradas para entreter enquanto você treina." },
+      { title: "Piso emborrachado", text: "Piso de borracha preta, macio e antiderrapante, pensado para o movimento das crianças." },
+    ],
+    photos: [
+      { src: "/up-fitness-site/images/area-kids.jpg", width: 960, height: 1280, alt: "Área kids da UP Fitness com tenda, mesas infantis e mural colorido" },
+    ],
+  },
+  {
+    id: "convivencia",
+    label: "Área de Convivência",
+    title: "Área de Convivência",
+    intro:
+      "Antes ou depois do treino, um espaço para respirar: sofás e poltronas, mesas para sentar, café e um ambiente climatizado para conversar ou esperar.",
+    points: [
+      { title: "Sofás e mesas", text: "Poltronas, sofás e mesas para sentar com calma antes ou depois do treino." },
+      { title: "Cantinho do café", text: "Espaço com dispensador e xícaras para se servir enquanto conversa." },
+      { title: "Sala de avaliação", text: "Sala reservada para avaliações e atendimento, ao lado da convivência." },
+    ],
+    photos: [
+      { src: "/up-fitness-site/images/convivencia-1.jpg", width: 900, height: 1600, alt: "Poltronas e tapete da área de convivência da UP Fitness" },
+      { src: "/up-fitness-site/images/convivencia-2.jpg", width: 900, height: 1600, alt: "Mesas com cadeiras e sofás da área de convivência, com parede verde UP ao fundo" },
+      { src: "/up-fitness-site/images/convivencia-3.jpg", width: 901, height: 1600, alt: "Aparador com dispenser de café e quadros na área de convivência" },
+    ],
+  },
+];
+
+// Estacionamento — foto oficial da fachada (Instagram @upfitness_lavras, arte promocional removida).
+export const parkingInfo = {
+  title: "Estacionamento próprio",
+  intro:
+    "A UP Fitness Zona Sul tem estacionamento próprio, gratuito para alunos. Você chega, estaciona na frente da unidade e entra direto para o treino — sem procurar vaga na rua e sem pagar nada a mais por isso.",
+  points: [
+    { title: "Gratuito para alunos", text: "Vaga reservada para quem treina na UP, sem custo adicional em nenhum plano." },
+    { title: "Na porta da academia", text: "Estacionamento próprio em frente à fachada da unidade, na Zona Sul de Lavras." },
+    { title: "Sem estresse", text: "Chegue perto do horário do seu treino: vaga garantida dentro do pátio da academia." },
+  ],
+  photo: {
+    src: "/up-fitness-site/images/up-facade-clean.webp",
+    width: 1672,
+    height: 941,
+    alt: "Estacionamento próprio da UP Fitness Zona Sul, em frente à fachada da academia",
+  } as AreaPhoto,
+};
+
+// Equipamentos — importados, fato confirmado na bio oficial e nos planos.
+export const equipmentInfo = {
+  title: "Equipamentos importados",
+  intro:
+    "O piso de musculação da UP é montado com equipamentos importados de alto padrão: máquinas de linha, pesos organizados por faixa e cartões explicativos em cada estação — nos dois andares.",
+  points: [
+    { title: "Importados", text: "Máquinas e pesos de alto padrão, importados, em todo o piso de musculação." },
+    { title: "Dois andares de treino", text: "A musculação se distribui em dois pisos climatizados, sem espera por aparelho." },
+    { title: "Cardio completo", text: "Esteiras e área de cardio para aquecer ou fechar o treino." },
+  ],
+  photos: [
+    { src: "/up-fitness-site/images/equip-1.jpg", width: 965, height: 891, alt: "Máquinas de musculação importadas na UP Fitness" },
+    { src: "/up-fitness-site/images/equip-2.jpg", width: 960, height: 1280, alt: "Piso de treino com equipamentos importados na UP Fitness" },
+    { src: "/up-fitness-site/images/equip-3.jpg", width: 1254, height: 891, alt: "Vista ampla do piso de musculação com equipamentos importados" },
+    { src: "/up-fitness-site/images/equip-4.jpg", width: 960, height: 1280, alt: "Equipamentos de musculação importados em detalhe" },
+    { src: "/up-fitness-site/images/equip-5.jpg", width: 1254, height: 891, alt: "Sala de musculação da UP Fitness com máquinas importadas e pista vermelha" },
+  ] as AreaPhoto[],
+};
+
 // Open questions for the academy before publishing. Shown nowhere on the page.
 export const pending = [
   "Logotipo oficial em vetor (SVG/PDF); o site usa uma recriação simplificada.",
@@ -226,5 +311,3 @@ export const pending = [
   "Domínio definitivo do site, para URL canônica, sitemap e robots.",
   "Regras de uso da área kids.",
 ];
-
-
