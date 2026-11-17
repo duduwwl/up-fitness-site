@@ -6,6 +6,9 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Plans } from "@/components/plans";
 import { Structure } from "@/components/structure";
+import { Areas } from "@/components/areas";
+import { Parking } from "@/components/parking";
+import { Equipment } from "@/components/equipment";
 import { Unit } from "@/components/unit";
 import { address, contact, hours } from "@/content/site";
 
@@ -41,6 +44,9 @@ export default function Home() {
       <main id="conteudo" tabIndex={-1}>
         <Hero />
         <Structure />
+        <Areas />
+        <Equipment />
+        <Parking />
         <Plans />
         <Band />
         <Unit />
