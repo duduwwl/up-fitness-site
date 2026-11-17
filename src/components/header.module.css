@@ -115,3 +115,56 @@
 .social:hover { background: var(--yellow); color: var(--black); }
 @media(max-width: 600px) { .bar { gap: 8px; } .brand :global(.logo-text) { font-size: 1.05rem; } }
 @media (min-width: 900px) and (max-width: 1100px) { .bar { gap: 12px; } .desktopNav a { padding-inline: 8px; } }
+
+/* Navbar premium: linha amarela de progresso + fundo com blur ao rolar + link ativo */
+.header::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--yellow), var(--yellow-deep));
+  transform-origin: left;
+  transform: scaleX(var(--scroll-progress, 0));
+  transition: transform 80ms linear;
+  pointer-events: none;
+}
+
+.header[data-scrolled="true"] {
+  background: color-mix(in srgb, var(--black) 88%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 #ffcb0522, 0 12px 32px rgb(0 0 0 / 0.35);
+  transition: background 240ms var(--ease), box-shadow 240ms var(--ease);
+}
+
+.desktopNav a {
+  position: relative;
+}
+
+.desktopNav a::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 6px;
+  height: 2px;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms var(--ease);
+}
+
+.desktopNav a:hover::after,
+.desktopNav a[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+.desktopNav a[data-active="true"] {
+  color: var(--yellow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header::after { transition: none; }
+  .desktopNav a::after { transition: none; }
+}

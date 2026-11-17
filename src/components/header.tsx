@@ -12,7 +12,47 @@ import styles from "./header.module.css";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState<string>("");
   const toggleRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    // Fundo com blur + linha de progresso de leitura no topo.
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+        document.documentElement.style.setProperty("--scroll-progress", String(progress));
+        setScrolled(window.scrollY > 8);
+        ticking = false;
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    // Link ativo: a seção visível acende no menu.
+    const ids = navItems.map((item) => item.href.slice(1));
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    for (const section of sections) observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -35,7 +75,7 @@ export function Header() {
 
   return (
     <TextEffects>
-    <header className={styles.header}>
+    <header className={styles.header} data-scrolled={scrolled}>
       <div className={`wrap ${styles.bar}`}>
         <a href="#inicio" className={styles.brand} aria-label="UP Fitness, voltar ao início">
           <Logo />
@@ -45,7 +85,9 @@ export function Header() {
           <ul>
             {navItems.map((item) => (
               <li key={item.href}>
-                <a href={item.href}>{item.label}</a>
+                <a href={item.href} data-active={active === item.href}>
+                  {item.label}
+                </a>
               </li>
             ))}
           </ul>
@@ -114,5 +156,3 @@ export function Header() {
     </TextEffects>
   );
 }
-
-
