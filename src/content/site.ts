@@ -233,14 +233,15 @@ export const photos = {
     page: "https://www.instagram.com/reel/De2Sp1Xy_Ij/",
   },
   team: {
-    src: "/up-fitness-site/images/instagram-estrutura.webp",
+    // Cover of the reel chosen by the client (2026-11-19).
+    src: "/up-fitness-site/images/instagram-neon-biceps.webp",
     width: 1080,
     height: 1918,
-    alt: "Equipe da UP Fitness dentro da academia Zona Sul",
-    caption: "Equipe e estrutura da UP Fitness Zona Sul.",
+    alt: "Duas mulheres fazendo pose de força em frente ao neon de bíceps da UP Fitness Zona Sul",
+    caption: "Painel de neon da UP Fitness Zona Sul.",
     credit: "UP Fitness Lavras",
-    license: "Instagram oficial",
-    page: "https://www.instagram.com/reel/DezRqgoR_Sc/",
+    license: "Instagram oficial (capa do reel)",
+    page: "https://www.instagram.com/reel/DavPgL5xBT2/",
   },
 } satisfies Record<string, Photo>;
 
@@ -321,11 +322,10 @@ export const equipmentInfo = {
     { title: "Cardio completo", text: "Esteiras e área de cardio para aquecer ou fechar o treino." },
   ],
   photos: [
-    { src: "/up-fitness-site/images/equip-1.jpg", width: 965, height: 891, alt: "Máquinas de musculação importadas na UP Fitness" },
-    { src: "/up-fitness-site/images/equip-2.jpg", width: 960, height: 1280, alt: "Piso de treino com equipamentos importados na UP Fitness" },
-    { src: "/up-fitness-site/images/equip-3.jpg", width: 1254, height: 891, alt: "Vista ampla do piso de musculação com equipamentos importados" },
-    { src: "/up-fitness-site/images/equip-4.jpg", width: 960, height: 1280, alt: "Equipamentos de musculação importados em detalhe" },
-    { src: "/up-fitness-site/images/equip-5.jpg", width: 1254, height: 891, alt: "Sala de musculação da UP Fitness com máquinas importadas e pista vermelha" },
+    // Crops of the client's floor photos (2026-11-19): real machines in the UP yellow and black.
+    { src: "/up-fitness-site/images/equip-piso-superior.webp", width: 960, height: 540, alt: "Piso de musculação com bancos, racks e máquinas amarelas e pretas sob o neon amarelo da UP Fitness" },
+    { src: "/up-fitness-site/images/equip-maquinas.webp", width: 560, height: 420, alt: "Máquinas de musculação importadas pretas com detalhes amarelos na UP Fitness" },
+    { src: "/up-fitness-site/images/equip-halteres.webp", width: 480, height: 360, alt: "Suporte de halteres com anilhas amarelas e bancos de supino na UP Fitness" },
   ] as AreaPhoto[],
 };
 

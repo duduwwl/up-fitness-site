@@ -62,27 +62,25 @@
 }
 
 .frame img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.figure:first-child,
-.figure:last-child {
+/* One wide view of the floor on top, two equal close-ups below. */
+.figure:first-child {
   grid-column: 1 / -1;
 }
 
-.figure:first-child .frame,
-.figure:last-child .frame {
+.figure:first-child .frame {
   aspect-ratio: 16 / 9;
 }
 
 @media (min-width: 900px) {
   .inner {
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: clamp(40px, 5vw, 80px);
     align-items: center;
-  }
-  .gallery {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
