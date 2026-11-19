@@ -18,7 +18,7 @@ export function Footer() {
         <a className={styles.logoLink} href="#inicio" aria-label="UP Fitness — voltar ao início">
           <Image
             className={styles.logo}
-            src="/up-fitness-site/images/instagram-logo.webp"
+            src="/up-fitness-site/images/up-logo-preto.webp"
             width={320}
             height={320}
             alt="UP Fitness"

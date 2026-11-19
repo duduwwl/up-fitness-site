@@ -323,7 +323,7 @@ export const equipmentInfo = {
   ],
   photos: [
     // Crops of the client's floor photos (2026-11-19): real machines in the UP yellow and black.
-    { src: "/up-fitness-site/images/equip-piso-superior.webp", width: 960, height: 540, alt: "Piso de musculação com bancos, racks e máquinas amarelas e pretas sob o neon amarelo da UP Fitness" },
+    { src: "/up-fitness-site/images/equip-piso-esteiras.webp", width: 962, height: 541, alt: "Máquinas de musculação, pista vermelha e fileira de esteiras sob o neon amarelo, com o logo UP na parede verde" },
     { src: "/up-fitness-site/images/equip-maquinas.webp", width: 560, height: 420, alt: "Máquinas de musculação importadas pretas com detalhes amarelos na UP Fitness" },
     { src: "/up-fitness-site/images/equip-halteres.webp", width: 480, height: 360, alt: "Suporte de halteres com anilhas amarelas e bancos de supino na UP Fitness" },
   ] as AreaPhoto[],
