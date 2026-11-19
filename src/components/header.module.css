@@ -2,8 +2,10 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--black);
+  /* Transparent over the hero video; turns black once the page scrolls. */
+  background: transparent;
   padding-top: env(safe-area-inset-top);
+  transition: background 240ms var(--ease), box-shadow 240ms var(--ease);
 }
 
 .bar {

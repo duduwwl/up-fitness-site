@@ -3,7 +3,9 @@
   isolation: isolate;
   display: grid;
   place-items: center;
-  min-height: calc(100svh - var(--header-h));
+  /* Slides up under the transparent header so the video also fills the navbar. */
+  margin-top: calc(-1 * (var(--header-h) + env(safe-area-inset-top)));
+  min-height: 100svh;
   background: var(--black);
   overflow: hidden;
 }
