@@ -15,11 +15,12 @@ test("plans include correct access and benefits", async ({ page }) => {
   const cards = page.locator("#planos ol > li");
   await expect(cards).toHaveCount(5);
   await expect(cards.first()).toContainText("Acesso das 12h às 16h");
-  for (const card of await cards.all()) {
+  for (const [i, card] of (await cards.all()).entries()) {
     await expect(card).toContainText("Equipamentos importados");
     await expect(card).toContainText("Ambiente climatizado");
     await expect(card).not.toContainText(/parcelas,.*meses/);
-    await expect(card.locator("a")).toHaveAttribute("href", /contratacao\//);
+    // Econômico keeps the on-site checkout; the others open the academy's Actuar sign-up.
+    await expect(card.locator("a")).toHaveAttribute("href", i === 0 ? /contratacao\// : /^https:\/\/upfitness\.actuar\.com\/#\/cadastro\//);
   }
 });
 
@@ -123,7 +124,8 @@ test("official media stays sharp and relevant", async ({ page }) => {
   );
   expect(media.length).toBeGreaterThanOrEqual(4);
   for (const image of media) {
-    expect(image.naturalWidth, `${image.alt} needs a useful source`).toBeGreaterThanOrEqual(image.alt === "UP Fitness" ? 320 : 1000);
+    // 960 px: the client's floor photos, shown at ~310 CSS px (still 3x on desktop).
+    expect(image.naturalWidth, `${image.alt} needs a useful source`).toBeGreaterThanOrEqual(image.alt === "UP Fitness" ? 320 : 960);
   }
   for (const caption of await page.locator("figcaption").all()) await expect(caption).not.toContainText(/igreja|figueira|imagem ilustrativa/i);
 });

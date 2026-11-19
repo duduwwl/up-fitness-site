@@ -8,3 +8,7 @@ export const navItems = [
   { href: "#duvidas", label: "Dúvidas" },
   { href: "#contato", label: "Contato" },
 ];
+
+// Header shows a shorter list; the footer keeps every section.
+const headerHrefs = new Set(["#estrutura", "#equipamentos", "#planos", "#duvidas"]);
+export const headerNavItems = navItems.filter((item) => headerHrefs.has(item.href));

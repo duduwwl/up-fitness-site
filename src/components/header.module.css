@@ -1,76 +1,218 @@
+/* Navbar: solid black, square shapes, one sliding yellow block. No gradients or blur (docs/design.md). */
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
   background: var(--black);
   padding-top: env(safe-area-inset-top);
+  border-bottom: 1px solid transparent;
+  transition:
+    transform 320ms var(--ease),
+    border-color 240ms var(--ease);
+}
+
+.header[data-scrolled="true"] {
+  border-bottom-color: var(--ground-3);
+}
+
+.header[data-hidden="true"] {
+  transform: translateY(-100%);
+}
+
+/* Keyboard users always see the bar they are in. */
+.header:focus-within {
+  transform: none;
 }
 
 .bar {
   height: var(--header-h);
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
+  transition: height 240ms var(--ease);
+}
+
+.header[data-scrolled="true"] .bar {
+  height: 64px;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  flex-shrink: 0;
   text-decoration: none;
-  margin-right: auto;
+}
+
+/* Live opening status next to the logo. */
+.status {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--ground-3);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #d9d8d1;
+  white-space: nowrap;
 }
 
 .desktopNav {
   display: none;
-}
-.desktopNav ul {
-  display: flex;
-  gap: 4px;
-}
-.desktopNav a,
-.mobileNav a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding-inline: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 160ms var(--ease);
-}
-.desktopNav a:hover {
-  color: var(--yellow);
+  position: relative;
+  margin-left: auto;
 }
 
-.cta {
+.desktopNav ul {
+  display: flex;
+}
+
+.marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: var(--yellow);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 260ms var(--ease),
+    width 260ms var(--ease),
+    opacity 160ms var(--ease);
+}
+
+.desktopNav a {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 16px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 200ms var(--ease);
+}
+
+.desktopNav a[data-on="true"] {
+  color: var(--black);
+}
+
+.actions {
   display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.join {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   min-height: 44px;
   padding: 10px 18px;
+  background: var(--yellow);
+  color: var(--black);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition:
+    background 160ms var(--ease),
+    transform 120ms var(--ease);
+}
+
+.join:hover {
+  background: var(--white);
+}
+
+.join:active,
+.mobileJoin:active {
+  transform: scale(0.98);
+}
+
+.upArrow {
+  width: 12px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 220ms var(--ease);
+}
+
+.join:hover .upArrow,
+.mobileList a:hover .upArrow,
+.mobileJoin:hover .upArrow {
+  transform: translateY(-3px);
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid var(--ground-3);
+  color: var(--yellow);
+  transition:
+    background 160ms var(--ease),
+    color 160ms var(--ease),
+    border-color 160ms var(--ease);
+}
+
+.icon:hover {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--black);
+}
+
+/* Reading progress: flat yellow line under the bar. */
+.progress {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--yellow);
+  transform-origin: left;
+  transform: scaleX(var(--scroll-progress, 0));
+  pointer-events: none;
 }
 
 .toggle {
-  width: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   height: 48px;
-  display: grid;
-  place-items: center;
-  margin-right: -12px;
+  margin-left: auto;
+  margin-right: -8px;
+  padding-inline: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   cursor: pointer;
 }
+
+.toggleLabel {
+  font-size: 0.875rem;
+}
+
 .burger {
   display: grid;
   gap: 7px;
   width: 24px;
 }
+
 .burger span {
   display: block;
   height: 3px;
   background: currentColor;
   transition: transform 200ms var(--ease);
 }
+
 .burger[data-open="true"] span:first-child {
   transform: translateY(5px) rotate(45deg);
 }
+
 .burger[data-open="true"] span:last-child {
   transform: translateY(-5px) rotate(-45deg);
 }
@@ -81,90 +223,118 @@
   top: 100%;
   background: var(--yellow);
   color: var(--black);
-  padding-block: 12px 24px;
+  padding-block: 16px 28px;
   max-height: calc(100svh - var(--header-h));
   overflow-y: auto;
   box-shadow: 0 16px 32px rgb(0 0 0 / 0.35); /* taste-skill-ignore: real overlay menu */
 }
-.mobileNav a {
-  width: 100%;
-  min-height: 56px;
-  padding-inline: 0;
+
+.mobileList li + li {
+  border-top: 2px solid var(--black);
+}
+
+.mobileList a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
   font-family: var(--display);
   font-weight: 800;
-  font-size: 2rem;
+  font-size: 2.25rem;
+  line-height: 1;
   text-transform: uppercase;
+  text-decoration: none;
+}
+
+.mobileList a .upArrow {
+  width: 20px;
+  height: 24px;
+}
+
+.mobileList a[aria-current="location"] {
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
+}
+
+.mobileStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+.mobileActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.mobileJoin,
+.mobileWa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.mobileJoin {
+  background: var(--black);
+  color: var(--yellow);
+}
+
+.mobileWa {
+  border: 2px solid var(--black);
+}
+
+@media (max-width: 600px) {
+  .bar {
+    gap: 8px;
+  }
+  .brand :global(.logo-text) {
+    font-size: 1.05rem;
+  }
 }
 
 @media (min-width: 900px) {
   .desktopNav {
     display: block;
   }
-  .cta {
-    display: inline-flex;
+  .actions {
+    display: flex;
   }
   .toggle {
     display: none;
   }
 }
 
-.desktopNav a { font-size: .9375rem; padding-inline: 16px; }
-.brand { flex-shrink: 0; }
-.social, .cta { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 10px; flex-shrink: 0; border: 1px solid #ffce0055; border-radius: 50%; }
-.social { color: var(--yellow); }
-.social:hover { background: var(--yellow); color: var(--black); }
-@media(max-width: 600px) { .bar { gap: 8px; } .brand :global(.logo-text) { font-size: 1.05rem; } }
-@media (min-width: 900px) and (max-width: 1100px) { .bar { gap: 12px; } .desktopNav a { padding-inline: 8px; } }
-
-/* Navbar premium: linha amarela de progresso + fundo com blur ao rolar + link ativo */
-.header::after {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  top: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--yellow), var(--yellow-deep));
-  transform-origin: left;
-  transform: scaleX(var(--scroll-progress, 0));
-  transition: transform 80ms linear;
-  pointer-events: none;
+@media (min-width: 1240px) {
+  .status {
+    display: inline-flex;
+  }
 }
 
-.header[data-scrolled="true"] {
-  background: color-mix(in srgb, var(--black) 88%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 #ffcb0522, 0 12px 32px rgb(0 0 0 / 0.35);
-  transition: background 240ms var(--ease), box-shadow 240ms var(--ease);
-}
-
-.desktopNav a {
-  position: relative;
-}
-
-.desktopNav a::after {
-  content: "";
-  position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: 6px;
-  height: 2px;
-  background: var(--yellow);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 200ms var(--ease);
-}
-
-.desktopNav a:hover::after,
-.desktopNav a[data-active="true"]::after {
-  transform: scaleX(1);
-}
-
-.desktopNav a[data-active="true"] {
-  color: var(--yellow);
+@media (min-width: 900px) and (max-width: 1100px) {
+  .desktopNav a {
+    padding-inline: 10px;
+  }
+  .icon:last-child {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .header::after { transition: none; }
-  .desktopNav a::after { transition: none; }
+  .header,
+  .bar,
+  .marker,
+  .upArrow,
+  .join {
+    transition: none;
+  }
 }

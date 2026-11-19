@@ -2,41 +2,37 @@
   background: var(--ground-2);
   overflow: hidden;
 }
-.point { border-top: 1px solid #ffffff25; padding-top: 16px; }
-.pointTitle { color: var(--yellow); }
-.point p { font-size: .95rem; }
-.frame, .secondaryFrame { overflow: hidden; border-radius: 12px; }
 
 .grid {
   display: grid;
   gap: 48px;
 }
 
+/* Two floor photos side by side, same 3:4 frame (both sources are 960x1280). */
 .media {
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
   min-width: 0;
-  padding-bottom: 24vw;
 }
+
 .figure {
-  width: 100%;
+  min-width: 0;
+  margin: 0;
 }
-.secondary {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 48%;
-  z-index: 1;
-}
-.secondaryFrame {
-  aspect-ratio: 4 / 5;
-}
+
 .frame {
-  aspect-ratio: 4 / 5;
-  max-height: 60svh;
-  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--ground-3);
 }
-.img {
-  object-position: 50% 50%;
+
+.frame :global(img) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .intro {
@@ -46,20 +42,33 @@
 
 .points {
   display: grid;
-  gap: 28px;
-  margin-top: 48px;
+  gap: 20px;
+  margin-top: 32px;
 }
+
+.point {
+  border-top: 1px solid #ffffff25;
+  padding-top: 16px;
+}
+
 .pointTitle {
   display: flex;
   align-items: baseline;
   gap: 12px;
+  color: var(--yellow);
   font-size: var(--t-body);
   font-weight: 600;
   margin-bottom: 4px;
 }
-.point p {
-  padding-left: calc(0.8em + 12px);
+
+.pointTitle :global(.bullet) {
+  display: none;
 }
+
+.point p {
+  font-size: 0.95rem;
+}
+
 .c0 {
   color: var(--yellow);
 }
@@ -71,6 +80,10 @@
 }
 
 @media (min-width: 640px) {
+  .media {
+    gap: 18px;
+  }
+
   .points {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 40px;
@@ -81,25 +94,12 @@
 @media (min-width: 1024px) {
   .grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 24px;
+    column-gap: 40px;
     align-items: center;
   }
   .media {
-    grid-column: 1 / span 5;
-    padding-bottom: 120px;
-  }
-  .figure {
-    width: auto;
-    margin-left: 0;
-  }
-  .frame {
-    aspect-ratio: auto;
-    height: 78svh;
-    max-height: 760px;
-  }
-  .secondary {
-    right: -14%;
-    width: 52%;
+    grid-column: 1 / span 6;
+    gap: 20px;
   }
   .body {
     grid-column: 7 / span 6;
@@ -111,10 +111,3 @@
     row-gap: 44px;
   }
 }
-.media { display: grid; gap: 18px; padding-bottom: 0; }
-.secondary { position: static; width: 65%; justify-self: end; margin-top: -30px; border: 8px solid var(--ground-2); border-radius: 16px; }
-.secondaryFrame { aspect-ratio: 3 / 2; }
-.secondary :global(img) { object-position: center 40%; }
-.points { margin-top: 32px; gap: 20px; }
-.point p { padding-left: 0; }
-.pointTitle :global(.bullet) { display: none; }

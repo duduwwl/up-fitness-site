@@ -49,13 +49,26 @@ export function Plans() {
                   </div>
                   <p className={styles.schedule}>{plan.schedule}</p>
 
-                  <a
-                    className={styles.cta}
-                    data-ui
-                    href={`/up-fitness-site/contratacao/?plano=${planSlug(plan.name)}`}
-                  >
-                    Escolher plano {plan.name}
-                  </a>
+                  {plan.signupUrl ? (
+                    <a
+                      className={styles.cta}
+                      data-ui
+                      href={plan.signupUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Escolher plano {plan.name}
+                      <span className="visually-hidden"> (cadastro da academia, abre em nova aba)</span>
+                    </a>
+                  ) : (
+                    <a
+                      className={styles.cta}
+                      data-ui
+                      href={`/up-fitness-site/contratacao/?plano=${planSlug(plan.name)}`}
+                    >
+                      Escolher plano {plan.name}
+                    </a>
+                  )}
 
                   <p className={styles.includes}>Inclui</p>
                   <ul className={styles.features}>

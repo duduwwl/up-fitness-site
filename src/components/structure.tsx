@@ -5,39 +5,27 @@ import { Reveal, RevealItem } from "./reveal";
 import styles from "./structure.module.css";
 
 export function Structure() {
-  const primary = photos.dayUse;
-  const secondary = photos.team;
+  const floorPhotos = [photos.upperFloor, photos.lowerFloor];
   return (
     <TextEffects>
     <section id="estrutura" className={`section ${styles.section}`} aria-labelledby="estrutura-title">
       <div className={`wrap ${styles.grid}`}>
         <Reveal className={styles.media}>
-          <RevealItem scale as="figure" className={styles.figure}>
-            <div className={styles.frame}>
-              <Image
-                className={`photo ${styles.img}`}
-                src={primary.src}
-                width={primary.width}
-                height={primary.height}
-                alt={primary.alt}
-                sizes="(min-width: 1024px) 42vw, 92vw"
-              />
-            </div>
-            <figcaption className="visually-hidden">{primary.caption}</figcaption>
-          </RevealItem>
-          <RevealItem scale as="figure" className={styles.secondary}>
-            <div className={styles.secondaryFrame}>
-              <Image
-                className="photo"
-                src={secondary.src}
-                width={secondary.width}
-                height={secondary.height}
-                alt={secondary.alt}
-                sizes="(min-width: 1024px) 18vw, 42vw"
-              />
-            </div>
-            <figcaption className="visually-hidden">{secondary.caption}</figcaption>
-          </RevealItem>
+          {floorPhotos.map((photo) => (
+            <RevealItem scale as="figure" className={styles.figure} key={photo.src}>
+              <div className={styles.frame}>
+                <Image
+                  className="photo"
+                  src={photo.src}
+                  width={photo.width}
+                  height={photo.height}
+                  alt={photo.alt}
+                  sizes="(min-width: 1024px) 25vw, 46vw"
+                />
+              </div>
+              <figcaption className="visually-hidden">{photo.caption}</figcaption>
+            </RevealItem>
+          ))}
         </Reveal>
 
         <Reveal className={styles.body}>

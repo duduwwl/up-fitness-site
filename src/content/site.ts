@@ -59,7 +59,13 @@ export type Plan = {
   schedule: string;
   features: string[];
   badge?: string;
+  /** Official Actuar sign-up page; plans without it keep the on-site checkout. */
+  signupUrl?: string;
 };
+
+// Sign-up links sent by the client (2026-11-19); Instagram utm/fbclid params removed.
+const actuarSignup = (planId: string) =>
+  `https://upfitness.actuar.com/#/cadastro/d65cf624-d853-4a9d-878f-3ae3f577c26b/${planId}/6b2e8466-81a7-47d4-a85a-339aff1df529`;
 
 // Sources: upfitness.actuar.com and the academy's published economic offer.
 export const plans: Plan[] = [
@@ -77,6 +83,7 @@ export const plans: Plan[] = [
     commitment: "2 parcelas, 2 meses",
     schedule: "Horário livre",
     features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados", "Ambiente climatizado"],
+    signupUrl: actuarSignup("019b6a9e-84bf-7228-80c3-0006221dd287"),
   },
   {
     name: "Trimestral",
@@ -84,6 +91,7 @@ export const plans: Plan[] = [
     commitment: "3 parcelas, 3 meses",
     schedule: "Horário livre",
     features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados", "Ambiente climatizado"],
+    signupUrl: actuarSignup("84455694-9a87-43de-ad17-4fd604d7e7c1"),
   },
   {
     name: "Semestral",
@@ -91,6 +99,7 @@ export const plans: Plan[] = [
     commitment: "6 parcelas, 6 meses",
     schedule: "Horário livre",
     features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados", "Ambiente climatizado"],
+    signupUrl: actuarSignup("bbf6092c-dd9d-47a7-9cba-d8d0f33e264e"),
   },
   {
     name: "Anual",
@@ -99,6 +108,7 @@ export const plans: Plan[] = [
     schedule: "Horário livre",
     features: ["Acesso em todo o horário", "Musculação nos dois andares", "Equipamentos importados", "Ambiente climatizado"],
     badge: "Melhor custo-benefício",
+    signupUrl: actuarSignup("21e8367f-4470-488a-b79d-77404e790853"),
   },
 ];
 
@@ -190,6 +200,27 @@ export const photos = {
     credit: "UP Fitness Lavras",
     license: "Instagram oficial; edição assistida por IA para remover arte promocional",
     page: "https://www.instagram.com/p/DfFEsozRnQF/",
+  },
+  // Floor photos sent by the client (2026-11-19).
+  upperFloor: {
+    src: "/up-fitness-site/images/piso-superior.jpg",
+    width: 960,
+    height: 1280,
+    alt: "Piso de musculação com halteres, bancos e máquinas sob teto alto na UP Fitness Zona Sul",
+    caption: "Piso de treino da UP Fitness Zona Sul.",
+    credit: "UP Fitness Lavras",
+    license: "Foto fornecida pela academia",
+    page: "https://www.instagram.com/upfitness_lavras/",
+  },
+  lowerFloor: {
+    src: "/up-fitness-site/images/piso-inferior.jpg",
+    width: 960,
+    height: 1280,
+    alt: "Piso com pista vermelha, gramado sintético e máquinas na UP Fitness Zona Sul",
+    caption: "Pista, gramado e máquinas da UP Fitness Zona Sul.",
+    credit: "UP Fitness Lavras",
+    license: "Foto fornecida pela academia",
+    page: "https://www.instagram.com/upfitness_lavras/",
   },
   training: {
     src: "/up-fitness-site/images/instagram-treino.webp",

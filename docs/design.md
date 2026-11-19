@@ -50,6 +50,9 @@ Abertura editorial com título à esquerda, ações à direita e foto ampla abai
 A imagem gerada ocupa o fundo inteiro da abertura. O título volta a Dê um UP, centralizado, sem slogan adicional. Camada preta uniforme preserva contraste; ações, status e aviso de imagem ilustrativa continuam visíveis. No celular a foto recorta para o centro-direita.
 
 
+## Navbar e fotos — 19/11/2026
+Navbar com 4 links (Estrutura, Equipamentos, Planos, Dúvidas; o rodapé mantém todos). Fundo preto chapado, sem blur nem degradê: um bloco amarelo desliza até o link em hover/foco e repousa no link da seção visível. Status "aberta agora" ao lado do logo (≥ 1240 px), botão quadrado "Matricule-se" com seta UP que sobe no hover, barra compacta ao rolar, some ao rolar para baixo e volta ao rolar para cima (foco por teclado sempre a mostra). Menu mobile amarelo com links grandes, status e ações. "Dois andares de treino" usa duas fotos da unidade em molduras 3:4 iguais; a foto do estacionamento ocupa toda a altura da coluna ao lado do texto. Planos bimestral, trimestral, semestral e anual levam ao cadastro oficial na Actuar; o econômico mantém o checkout do site.
+
 ## Movimento aprovado — 29/10/2026
 Texto estático recebe spans por palavra e entra com blur leve uma vez por viewport. Campos, opções, SVG e status dinâmico não são fragmentados. Sem JavaScript o texto continua visível. Planos entram com escala e defasagem; FlameWrap fornecido pelo usuário contorna preços em amarelo apenas com suporte nativo a HTML-in-canvas. O rodapé é revelado atrás do main em telas grandes; telas curtas/celulares usam fluxo normal para manter links acessíveis. Movimento reduzido desativa animações decorativas.
 
