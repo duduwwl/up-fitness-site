@@ -23,7 +23,7 @@ src/
 │   ├── header.tsx            client: menu mobile (Escape, foco, aria-expanded)
 │   ├── hero.tsx              pilha de pastas com abas em seta
 │   ├── open-status.tsx       client: "aberta agora" no fuso de São Paulo
-│   ├── structure.tsx, plans.tsx, band.tsx, unit.tsx, faq.tsx
+│   ├── structure.tsx, plans.tsx, unit.tsx, faq.tsx
 │   ├── contact.tsx           client: formulário que abre o WhatsApp
 │   ├── footer.tsx, icons.tsx, reveal.tsx
 ├── content/site.ts           ÚNICA fonte de dados comerciais + pendências

@@ -1,4 +1,3 @@
-import { Band } from "@/components/band";
 import { Contact } from "@/components/contact";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
@@ -48,7 +47,6 @@ export default function Home() {
         <Equipment />
         <Parking />
         <Plans />
-        <Band />
         <Unit />
         <Faq />
         <Contact />

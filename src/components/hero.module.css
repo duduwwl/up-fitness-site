@@ -3,7 +3,8 @@
   isolation: isolate;
   display: grid;
   place-items: center;
-  min-height: calc(100svh - var(--header-h));
+  /* The header floats over the video, so the hero fills the whole first screen. */
+  min-height: 100svh;
   background: var(--black);
   overflow: hidden;
 }

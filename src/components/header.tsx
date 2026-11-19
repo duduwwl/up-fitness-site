@@ -18,19 +18,21 @@ function UpArrow() {
   );
 }
 
+// Capsule = brand disc + nav + collapsed CTA, plus the bar's own gaps and padding.
+const CAPSULE_EXTRA = 40 + 48 + 2 * 20 + 2 * 8;
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [active, setActive] = useState<string>("");
   const [hovered, setHovered] = useState<string | null>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const listRef = useRef<HTMLUListElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLElement>(null);
   const markerRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // Compact bar after leaving the top, hide while reading down, return on any scroll up.
-    let lastY = window.scrollY;
+    // Leaving the hero turns the full-width bar into the floating capsule.
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
@@ -39,17 +41,30 @@ export function Header() {
         const y = window.scrollY;
         const max = document.documentElement.scrollHeight - window.innerHeight;
         document.documentElement.style.setProperty("--scroll-progress", String(max > 0 ? Math.min(1, y / max) : 0));
-        setScrolled(y > 8);
-        if (Math.abs(y - lastY) > 6) {
-          setHidden(y > lastY && y > 480);
-          lastY = y;
-        }
+        setScrolled(y > 24);
         ticking = false;
       });
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    // The capsule hugs its content: measure the nav once fonts are ready and on resize.
+    const measure = () => {
+      const header = headerRef.current;
+      const nav = navRef.current;
+      if (!header || !nav) return;
+      header.style.setProperty("--capsule-w", `${nav.scrollWidth + CAPSULE_EXTRA}px`);
+      // Room the CTA label needs when it unfolds inside the capsule.
+      const label = header.querySelector<HTMLElement>(`.${styles.joinLabel} > span`);
+      if (label) header.style.setProperty("--join-w", `${label.scrollWidth + 10}px`);
+    };
+    measure();
+    void document.fonts?.ready.then(measure);
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
   }, []);
 
   useEffect(() => {
@@ -67,7 +82,6 @@ export function Header() {
       { rootMargin: "-40% 0px -55% 0px" },
     );
     for (const section of sections) observer.observe(section);
-    // Above the first tracked section nothing is active.
     const first = sections[0];
     const onTop = () => window.scrollY + window.innerHeight * 0.45 < first.offsetTop && setActive("");
     window.addEventListener("scroll", onTop, { passive: true });
@@ -77,13 +91,13 @@ export function Header() {
     };
   }, []);
 
-  // One yellow block slides to the hovered link, or rests on the active one.
+  // One yellow pill slides to the hovered link, or rests on the active one.
   const placeMarker = useCallback(() => {
-    const list = listRef.current;
+    const nav = navRef.current;
     const marker = markerRef.current;
-    if (!list || !marker) return;
+    if (!nav || !marker) return;
     const target = hovered ?? active;
-    const link = target ? list.querySelector<HTMLAnchorElement>(`a[href="${target}"]`) : null;
+    const link = target ? nav.querySelector<HTMLAnchorElement>(`a[href="${target}"]`) : null;
     if (!link) {
       marker.style.opacity = "0";
       return;
@@ -121,21 +135,15 @@ export function Header() {
   const highlighted = hovered ?? active;
 
   return (
-    <header
-      className={styles.header}
-      data-scrolled={scrolled}
-      data-hidden={hidden && !open}
-    >
-      <div className={`wrap ${styles.bar}`}>
+    <header ref={headerRef} className={styles.header} data-scrolled={scrolled} data-open={open}>
+      <div className={styles.bar}>
         <a href="#inicio" className={styles.brand} aria-label="UP Fitness, voltar ao início">
           <Logo />
         </a>
 
-        <OpenStatus className={styles.status} />
-
-        <nav aria-label="Principal" className={styles.desktopNav}>
+        <nav ref={navRef} aria-label="Principal" className={styles.desktopNav} onMouseLeave={() => setHovered(null)}>
           <span ref={markerRef} className={styles.marker} aria-hidden="true" />
-          <ul ref={listRef} onMouseLeave={() => setHovered(null)}>
+          <ul>
             {headerNavItems.map((item) => (
               <li key={item.href}>
                 <a
@@ -154,16 +162,22 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
+          <div className={styles.extras}>
+            <OpenStatus className={styles.status} />
+            <a className={styles.icon} href={whatsappUrl(visitMessage)} target="_blank" rel="noopener noreferrer">
+              <SocialIcon kind="whatsapp" />
+              <span className="visually-hidden">WhatsApp (abre em nova aba)</span>
+            </a>
+            <a className={styles.icon} href={contact.instagramUnit} target="_blank" rel="noopener noreferrer">
+              <SocialIcon kind="instagram" />
+              <span className="visually-hidden">Instagram (abre em nova aba)</span>
+            </a>
+          </div>
           <a className={styles.join} href="#planos">
-            Matricule-se <UpArrow />
-          </a>
-          <a className={styles.icon} href={whatsappUrl(visitMessage)} target="_blank" rel="noopener noreferrer">
-            <SocialIcon kind="whatsapp" />
-            <span className="visually-hidden">WhatsApp (abre em nova aba)</span>
-          </a>
-          <a className={styles.icon} href={contact.instagramUnit} target="_blank" rel="noopener noreferrer">
-            <SocialIcon kind="instagram" />
-            <span className="visually-hidden">Instagram (abre em nova aba)</span>
+            <span className={styles.joinLabel}>
+              <span>Matricule-se</span>
+            </span>
+            <UpArrow />
           </a>
         </div>
 
@@ -182,9 +196,11 @@ export function Header() {
             <span />
           </span>
         </button>
-      </div>
 
-      <span className={styles.progress} aria-hidden="true" />
+        <span className={styles.progress} aria-hidden="true">
+          <span />
+        </span>
+      </div>
 
       <AnimatePresence>
         {open && (
@@ -192,43 +208,41 @@ export function Header() {
             id="menu-mobile"
             aria-label="Menu"
             className={styles.mobileNav}
-            initial={{ clipPath: "inset(0 0 100% 0)" }}
-            animate={{ clipPath: "inset(0 0 0% 0)" }}
-            exit={{ clipPath: "inset(0 0 100% 0)" }}
-            transition={{ duration: 0.28, ease: [0.2, 0.7, 0.2, 1] }}
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="wrap">
-              <ul className={styles.mobileList}>
-                {headerNavItems.map((item, i) => (
-                  <m.li
-                    key={item.href}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.08 + i * 0.04, duration: 0.24 }}
-                  >
-                    <a href={item.href} aria-current={active === item.href ? "location" : undefined} onClick={() => setOpen(false)}>
-                      {item.label}
-                      <UpArrow />
-                    </a>
-                  </m.li>
-                ))}
-              </ul>
-              <OpenStatus className={styles.mobileStatus} />
-              <div className={styles.mobileActions}>
-                <a className={styles.mobileJoin} href="#planos" onClick={() => setOpen(false)}>
-                  Matricule-se <UpArrow />
-                </a>
-                <a
-                  className={styles.mobileWa}
-                  href={whatsappUrl(visitMessage)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
+            <ul className={styles.mobileList}>
+              {headerNavItems.map((item, i) => (
+                <m.li
+                  key={item.href}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.06 + i * 0.045, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <SocialIcon kind="whatsapp" /> WhatsApp
-                  <span className="visually-hidden"> (abre em nova aba)</span>
-                </a>
-              </div>
+                  <a href={item.href} aria-current={active === item.href ? "location" : undefined} onClick={() => setOpen(false)}>
+                    {item.label}
+                    <UpArrow />
+                  </a>
+                </m.li>
+              ))}
+            </ul>
+            <OpenStatus className={styles.mobileStatus} />
+            <div className={styles.mobileActions}>
+              <a className={styles.mobileJoin} href="#planos" onClick={() => setOpen(false)}>
+                Matricule-se <UpArrow />
+              </a>
+              <a
+                className={styles.mobileWa}
+                href={whatsappUrl(visitMessage)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+              >
+                <SocialIcon kind="whatsapp" /> WhatsApp
+                <span className="visually-hidden"> (abre em nova aba)</span>
+              </a>
             </div>
           </m.nav>
         )}
