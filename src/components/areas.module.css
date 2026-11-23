@@ -140,10 +140,17 @@
     grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
     align-items: start;
   }
+  .panel[data-single="true"] {
+    grid-template-columns: 1fr;
+  }
   .photos {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .figure[data-first="true"] {
     grid-column: 1 / -1;
   }
+}
+
+.panel[data-single="true"] .body {
+  max-width: 46rem;
 }

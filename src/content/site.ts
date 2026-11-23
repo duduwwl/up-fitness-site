@@ -2,6 +2,8 @@
 // Each block names its public source and the date it was checked (2026-10-29).
 // Anything not confirmed lives in `pending` and is NOT rendered as fact.
 
+import type { AreaPhoto, Area } from "./areas";
+
 export const checkedAt = "2026-10-29";
 
 export const brand = {
@@ -39,6 +41,17 @@ export const address = {
 export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   `UP Fitness, ${address.street}, ${address.district}, ${address.city} - ${address.state}, ${address.postalCode}`,
 )}`;
+
+// Nota real da unidade no Google (perfil "Up Fitness Academia", R. Kenedy dos Santos, Lavras-MG).
+// Fonte: Google Maps / Google Places, place_id ChIJhQ-1CrasypQRjXkoY_Jf_Uk (consultado 2026-11-23).
+// A API do Google não expõe os textos longos; por isso só mostramos a nota, a contagem e o link.
+// `quotes` são reações curtas reais retornadas pela API; textos de depoimento não são inventados.
+export const googleReviews = {
+  rating: 4.8,
+  count: 223,
+  url: "https://search.google.com/local/reviews?placeid=ChIJhQ-1CrasypQRjXkoY_Jf_Uk",
+  quotes: ["Top", "Show"],
+};
 
 export type DayHours = { label: string; days: number[]; open: string; close: string };
 
@@ -247,51 +260,8 @@ export const photos = {
 
 
 // Áreas da academia — fotos publicadas pela unidade (enviadas pelo cliente, 2026-11-17).
-export type AreaPhoto = { src: string; width: number; height: number; alt: string };
-
-export type Area = {
-  id: string;
-  label: string;
-  title: string;
-  intro: string;
-  points: { title: string; text: string }[];
-  photos: AreaPhoto[];
-};
-
-export const areas: Area[] = [
-  {
-    id: "kids",
-    label: "Área Kids",
-    title: "Área Kids",
-    intro:
-      "Um espaço pensado para as crianças enquanto você treina: brinquedos, mesas para atividades e um ambiente colorido e seguro, dentro da unidade.",
-    points: [
-      { title: "Sempre acompanhada", text: "A área fica dentro da academia, de vista do piso de treino — pergunte as regras de uso pelo WhatsApp." },
-      { title: "Feita para brincar", text: "Tenda, jogos de chão, mesas e cadeiras no tamanho deles e paredes ilustradas para entreter enquanto você treina." },
-      { title: "Piso emborrachado", text: "Piso de borracha preta, macio e antiderrapante, pensado para o movimento das crianças." },
-    ],
-    photos: [
-      { src: "/up-fitness-site/images/area-kids.jpg", width: 960, height: 1280, alt: "Área kids da UP Fitness com tenda, mesas infantis e mural colorido" },
-    ],
-  },
-  {
-    id: "convivencia",
-    label: "Área de Convivência",
-    title: "Área de Convivência",
-    intro:
-      "Antes ou depois do treino, um espaço para respirar: sofás e poltronas, mesas para sentar, café e um ambiente climatizado para conversar ou esperar.",
-    points: [
-      { title: "Sofás e mesas", text: "Poltronas, sofás e mesas para sentar com calma antes ou depois do treino." },
-      { title: "Cantinho do café", text: "Espaço com dispensador e xícaras para se servir enquanto conversa." },
-      { title: "Sala de avaliação", text: "Sala reservada para avaliações e atendimento, ao lado da convivência." },
-    ],
-    photos: [
-      { src: "/up-fitness-site/images/convivencia-1.jpg", width: 900, height: 1600, alt: "Poltronas e tapete da área de convivência da UP Fitness" },
-      { src: "/up-fitness-site/images/convivencia-2.jpg", width: 900, height: 1600, alt: "Mesas com cadeiras e sofás da área de convivência, com parede verde UP ao fundo" },
-      { src: "/up-fitness-site/images/convivencia-3.jpg", width: 901, height: 1600, alt: "Aparador com dispenser de café e quadros na área de convivência" },
-    ],
-  },
-];
+export type { AreaPhoto, Area };
+export { areas } from "./areas";
 
 // Estacionamento — foto oficial da fachada (Instagram @upfitness_lavras, arte promocional removida).
 export const parkingInfo = {

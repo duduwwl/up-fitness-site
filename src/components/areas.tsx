@@ -62,23 +62,26 @@ export function Areas() {
           role="tabpanel"
           aria-labelledby={`tab-${current.id}`}
           className={styles.panel}
+          data-single={current.photos.length === 0}
         >
-          <div className={styles.photos}>
-            {current.photos.map((photo, i) => (
-              <figure key={photo.src} className={styles.figure} data-first={i === 0}>
-                <div className={styles.frame}>
-                  <Image
-                    className="photo"
-                    src={photo.src}
-                    width={photo.width}
-                    height={photo.height}
-                    alt={photo.alt}
-                    sizes="(min-width: 900px) 40vw, 92vw"
-                  />
-                </div>
-              </figure>
-            ))}
-          </div>
+          {current.photos.length > 0 && (
+            <div className={styles.photos}>
+              {current.photos.map((photo, i) => (
+                <figure key={photo.src} className={styles.figure} data-first={i === 0}>
+                  <div className={styles.frame}>
+                    <Image
+                      className="photo"
+                      src={photo.src}
+                      width={photo.width}
+                      height={photo.height}
+                      alt={photo.alt}
+                      sizes="(min-width: 900px) 40vw, 92vw"
+                    />
+                  </div>
+                </figure>
+              ))}
+            </div>
+          )}
 
           <div className={styles.body}>
             <h3 className={`display ${styles.areaTitle}`}>{current.title}</h3>

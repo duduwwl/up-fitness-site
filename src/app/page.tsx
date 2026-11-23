@@ -9,6 +9,7 @@ import { Areas } from "@/components/areas";
 import { Parking } from "@/components/parking";
 import { Equipment } from "@/components/equipment";
 import { Unit } from "@/components/unit";
+import { Reviews } from "@/components/reviews";
 import { address, contact, hours } from "@/content/site";
 
 const dayCodes = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -48,6 +49,7 @@ export default function Home() {
         <Parking />
         <Plans />
         <Unit />
+        <Reviews />
         <Faq />
         <Contact />
       </main>
