@@ -42,15 +42,20 @@ export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encode
   `UP Fitness, ${address.street}, ${address.district}, ${address.city} - ${address.state}, ${address.postalCode}`,
 )}`;
 
-// Nota real da unidade no Google (perfil "Up Fitness Academia", R. Kenedy dos Santos, Lavras-MG).
-// Fonte: Google Maps / Google Places, place_id ChIJhQ-1CrasypQRjXkoY_Jf_Uk (consultado 2026-11-23).
-// A API do Google não expõe os textos longos; por isso só mostramos a nota, a contagem e o link.
-// `quotes` são reações curtas reais retornadas pela API; textos de depoimento não são inventados.
+// Depoimentos reais de alunos no Google (perfil "Up Fitness Academia", Lavras-MG),
+// transcritos verbatim do Google Maps em 2026-11-23 (place_id ChIJhQ-1CrasypQRjXkoY_Jf_Uk).
+// Selecionadas avaliações 5 estrelas, bem escritas e sem informações desatualizadas.
+// Nada é inventado nem editado — apenas a nota numérica não é exibida, a pedido.
 export const googleReviews = {
-  rating: 4.8,
-  count: 223,
   url: "https://search.google.com/local/reviews?placeid=ChIJhQ-1CrasypQRjXkoY_Jf_Uk",
-  quotes: ["Top", "Show"],
+  testimonials: [
+    { name: "Wilian Soares Lacerda", text: "Academia espaçosa, aparelhos modernos, supervisão nos treinos durante todo momento, funcionários atenciosos, horário extenso de funcionamento. Eu indico!" },
+    { name: "Cinthia Ferreira", text: "Excelente academia e instrutores muito atenciosos. A recepcionista das 6 horas da manhã, muito carismática, educada e prestativa. Nada a reclamar, somente elogios." },
+    { name: "Richardson Pablo", text: "Ambiente acolhedor e familiar. Equipamentos modernos e uma equipe muito atenciosa. Excelente localização." },
+    { name: "Emerson Reis", text: "Excelente academia! Funcionários e instrutores educados e atenciosos (pra mim um diferencial e tanto)." },
+    { name: "Hilda Mota", text: "É ótima, treinadores atenciosos, atendimento humanizado, preços justos." },
+    { name: "Bruno Xavier", text: "Excelente academia, equipamentos novos, instrutores muito atenciosos. Recomendo." },
+  ],
 };
 
 export type DayHours = { label: string; days: number[]; open: string; close: string };
