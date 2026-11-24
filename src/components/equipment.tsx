@@ -37,7 +37,7 @@ export function Equipment() {
                   width={photo.width}
                   height={photo.height}
                   alt={photo.alt}
-                  sizes="(min-width: 900px) 30vw, 45vw"
+                  sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 47vw"
                 />
               </div>
             </RevealItem>

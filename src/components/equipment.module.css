@@ -49,6 +49,16 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
+@media (min-width: 640px) {
+  .gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  .gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 
 .figure {
   margin: 0;
@@ -58,7 +68,7 @@
   overflow: hidden;
   border-radius: 12px;
   background: var(--ground-2);
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
 }
 
 .frame img {
@@ -68,19 +78,3 @@
   object-fit: cover;
 }
 
-/* One wide view of the floor on top, two equal close-ups below. */
-.figure:first-child {
-  grid-column: 1 / -1;
-}
-
-.figure:first-child .frame {
-  aspect-ratio: 16 / 9;
-}
-
-@media (min-width: 900px) {
-  .inner {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    column-gap: clamp(40px, 5vw, 80px);
-    align-items: center;
-  }
-}

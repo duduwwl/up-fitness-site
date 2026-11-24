@@ -10,7 +10,7 @@ export function Reviews() {
         <div className="wrap">
           <Reveal className={styles.head}>
             <RevealItem as="h2" className="display h2">
-              <span id="avaliacoes-title">Feedbacks do Google</span>
+              <span id="avaliacoes-title">Feedbacks</span>
             </RevealItem>
             <RevealItem as="p" className={styles.lede}>
               O que quem treina na UP escreveu sobre a unidade — avaliações reais publicadas no Google.
@@ -23,7 +23,6 @@ export function Reviews() {
                 <blockquote className={styles.quote}>{review.text}</blockquote>
                 <figcaption className={styles.author}>
                   <span className={styles.name}>{review.name}</span>
-                  <span className={styles.source}>Avaliação no Google</span>
                 </figcaption>
               </RevealItem>
             ))}

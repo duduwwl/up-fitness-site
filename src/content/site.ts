@@ -287,6 +287,18 @@ export const parkingInfo = {
 };
 
 // Equipamentos — importados, fato confirmado na bio oficial e nos planos.
+// Atendimento — descrito a partir do que os próprios alunos destacam nas avaliações
+// do Google (atendimento humanizado, professores presentes, acompanhamento de perto).
+export const serviceInfo = {
+  intro:
+    "Na UP você não treina sozinho. A equipe acompanha de perto, do primeiro dia ao treino mais avançado, com um atendimento que trata cada aluno pelo nome.",
+  points: [
+    { title: "Acompanhamento de perto", text: "Professores e estagiários presentes no salão o tempo todo, ajustando execução, carga e postura durante o treino." },
+    { title: "Atendimento humanizado", text: "Da recepção aos treinadores, uma equipe atenciosa que conhece você, tira dúvidas e orienta sem pressa." },
+    { title: "Treino para o seu nível", text: "Ajuda para montar e evoluir o treino, seja no seu primeiro dia ou para quem já treina há anos." },
+  ],
+};
+
 export const equipmentInfo = {
   title: "Equipamentos importados",
   intro:
@@ -297,10 +309,14 @@ export const equipmentInfo = {
     { title: "Cardio completo", text: "Esteiras e área de cardio para aquecer ou fechar o treino." },
   ],
   photos: [
-    // Crops of the client's floor photos (2026-11-19): real machines in the UP yellow and black.
-    { src: "/up-fitness-site/images/equip-piso-esteiras.webp", width: 962, height: 541, alt: "Máquinas de musculação, pista vermelha e fileira de esteiras sob o neon amarelo, com o logo UP na parede verde" },
-    { src: "/up-fitness-site/images/equip-maquinas.webp", width: 560, height: 420, alt: "Máquinas de musculação importadas pretas com detalhes amarelos na UP Fitness" },
-    { src: "/up-fitness-site/images/equip-halteres.webp", width: 480, height: 360, alt: "Suporte de halteres com anilhas amarelas e bancos de supino na UP Fitness" },
+    // Fotos da unidade enviadas pelo cliente (2026-11-23): equipamentos reais nas cores UP.
+    { src: "/up-fitness-site/images/equip-halteres-up.webp", width: 1031, height: 1375, alt: "Rack de halteres com a marca UP Fitness, parede verde com o logo UP e esteiras ao fundo" },
+    { src: "/up-fitness-site/images/equip-esteiras-corrida.webp", width: 1031, height: 1375, alt: "Alunos correndo nas esteiras KX9000 sobre a pista vermelha, com o logo UP na parede verde" },
+    { src: "/up-fitness-site/images/equip-legpress-matrix.webp", width: 1100, height: 1204, alt: "Fileira de leg press Matrix no piso de musculação da UP Fitness" },
+    { src: "/up-fitness-site/images/equip-remada-amarela.webp", width: 773, height: 1375, alt: "Máquina de remada articulada amarela UP Sport Brasil no piso da UP Fitness" },
+    { src: "/up-fitness-site/images/equip-supino-amarelo.webp", width: 773, height: 1375, alt: "Supino articulado amarelo UP Sport Brasil com piso vermelho na UP Fitness" },
+    { src: "/up-fitness-site/images/equip-rosca-scott.webp", width: 1024, height: 1280, alt: "Rosca scott amarela UP Sport Brasil no piso de musculação da UP Fitness" },
+    { src: "/up-fitness-site/images/equip-mesa-flexora.webp", width: 1024, height: 1280, alt: "Mesa flexora e extensora UP Sport Brasil na UP Fitness" },
   ] as AreaPhoto[],
 };
 
