@@ -47,11 +47,11 @@ export default function Home() {
         <Hero />
         <Marquee />
         <Structure />
+        <Plans />
         <Areas />
         <Equipment />
         <Service />
         <Parking />
-        <Plans />
         <Unit />
         <Reviews />
         <Faq />
