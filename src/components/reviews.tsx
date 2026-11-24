@@ -13,15 +13,17 @@ export function Reviews() {
               <span id="avaliacoes-title">Feedbacks</span>
             </RevealItem>
             <RevealItem as="p" className={styles.lede}>
-              O que quem treina na UP escreveu sobre a unidade — avaliações reais publicadas no Google.
+              O que quem treina na UP escreveu sobre a unidade.
             </RevealItem>
           </Reveal>
 
           <Reveal className={styles.grid}>
             {googleReviews.testimonials.map((review) => (
               <RevealItem as="figure" key={review.name} className={styles.card}>
+                <span className={styles.mark} aria-hidden="true">“</span>
                 <blockquote className={styles.quote}>{review.text}</blockquote>
                 <figcaption className={styles.author}>
+                  <span className={styles.avatar} aria-hidden="true">{review.name.charAt(0)}</span>
                   <span className={styles.name}>{review.name}</span>
                 </figcaption>
               </RevealItem>

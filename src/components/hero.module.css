@@ -15,6 +15,37 @@
 .title { font-size: clamp(5rem, 15.5vw, 15rem); line-height: .95; letter-spacing: -.035em; color: var(--yellow); }
 .lede { max-width: 48ch; margin: 28px auto 0; font-size: clamp(1rem, 1.7vw, 1.35rem); line-height: 1.55; color: var(--white); }
 .actions { display: flex; justify-content: center; align-items: center; gap: 28px; flex-wrap: wrap; margin-top: 32px; }
+.scrollCue {
+  position: absolute;
+  left: 50%;
+  bottom: max(28px, env(safe-area-inset-bottom));
+  translate: -50% 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 72px;
+}
+.scrollLine {
+  position: relative;
+  width: 2px;
+  height: 56px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.25);
+}
+.scrollLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--yellow);
+  animation: cue 2s var(--ease) infinite;
+}
+@keyframes cue {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scrollLine::after { animation: none; transform: none; }
+}
 .videoControl {
   position: absolute;
   right: max(var(--margin), 20px);

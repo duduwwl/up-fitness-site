@@ -11,6 +11,7 @@ import { Equipment } from "@/components/equipment";
 import { Unit } from "@/components/unit";
 import { Reviews } from "@/components/reviews";
 import { Service } from "@/components/service";
+import { Marquee } from "@/components/marquee";
 import { address, contact, hours } from "@/content/site";
 
 const dayCodes = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -44,6 +45,7 @@ export default function Home() {
       <Header />
       <main id="conteudo" tabIndex={-1}>
         <Hero />
+        <Marquee />
         <Structure />
         <Areas />
         <Equipment />

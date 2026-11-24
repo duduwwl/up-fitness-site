@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { equipmentInfo } from "@/content/site";
 import { Reveal, RevealItem } from "./reveal";
+import { EquipmentGallery } from "./equipment-gallery";
 import styles from "./equipment.module.css";
 
 export function Equipment() {
@@ -27,22 +27,7 @@ export function Equipment() {
           </ul>
         </Reveal>
 
-        <Reveal className={styles.gallery}>
-          {equipmentInfo.photos.map((photo) => (
-            <RevealItem scale as="figure" key={photo.src} className={styles.figure}>
-              <div className={styles.frame}>
-                <Image
-                  className="photo"
-                  src={photo.src}
-                  width={photo.width}
-                  height={photo.height}
-                  alt={photo.alt}
-                  sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 47vw"
-                />
-              </div>
-            </RevealItem>
-          ))}
-        </Reveal>
+        <EquipmentGallery photos={equipmentInfo.photos} />
       </div>
     </section>
   );

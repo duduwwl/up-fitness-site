@@ -56,3 +56,6 @@ Navbar: o cliente testou duas versões novas (bloco amarelo deslizante; cápsula
 ## Movimento aprovado — 29/10/2026
 Texto estático recebe spans por palavra e entra com blur leve uma vez por viewport. Campos, opções, SVG e status dinâmico não são fragmentados. Sem JavaScript o texto continua visível. Planos entram com escala e defasagem; FlameWrap fornecido pelo usuário contorna preços em amarelo apenas com suporte nativo a HTML-in-canvas. O rodapé é revelado atrás do main em telas grandes; telas curtas/celulares usam fluxo normal para manter links acessíveis. Movimento reduzido desativa animações decorativas.
 
+
+## Polimento premium — 24/11/2026
+Faixa amarela inclinada com fatos confirmados logo após a abertura (pausa no hover, parada com movimento reduzido; leitores de tela recebem lista oculta). Galeria de equipamentos abre em lightbox (<dialog> nativo, setas do teclado, Esc fecha). Feedbacks com aspas grandes, inicial do autor e elevação no hover. Indicador de rolagem no hero e zoom leve nas fotos ao passar o mouse. Removidos: item 'Dois andares de treino' em Equipamentos e a frase 'avaliações reais publicadas no Google' em Feedbacks.

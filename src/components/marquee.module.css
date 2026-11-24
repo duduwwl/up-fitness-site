@@ -1,0 +1,55 @@
+.band {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: var(--yellow);
+  border-block: 2px solid var(--black);
+  transform: rotate(-1.2deg);
+  margin-block: -14px;
+  padding-block: 14px;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: slide 38s linear infinite;
+}
+.band:hover .track {
+  animation-play-state: paused;
+}
+
+.group {
+  display: flex;
+  flex: none;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 40px);
+  padding-right: clamp(20px, 3vw, 40px);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.mark {
+  width: 0.7em;
+  height: 0.5em;
+  flex: none;
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

@@ -43,6 +43,9 @@ export function Hero() {
             <a className="text-link" href="#planos">Ver planos</a>
           </div>
         </div>
+        <a className={styles.scrollCue} href="#estrutura" aria-label="Rolar para a estrutura">
+          <span className={styles.scrollLine} aria-hidden="true" />
+        </a>
       </section>
     </TextEffects>
   );

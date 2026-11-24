@@ -305,7 +305,6 @@ export const equipmentInfo = {
     "O piso de musculação da UP é montado com equipamentos importados de alto padrão: máquinas de linha, pesos organizados por faixa e cartões explicativos em cada estação — nos dois andares.",
   points: [
     { title: "Importados", text: "Máquinas e pesos de alto padrão, importados, em todo o piso de musculação." },
-    { title: "Dois andares de treino", text: "A musculação se distribui em dois pisos climatizados, sem espera por aparelho." },
     { title: "Cardio completo", text: "Esteiras e área de cardio para aquecer ou fechar o treino." },
   ],
   photos: [

@@ -39,6 +39,29 @@
   padding: 28px;
   background: var(--ground-3);
   border-top: 3px solid var(--yellow);
+  transition:
+    transform 300ms var(--ease),
+    background-color 300ms var(--ease);
+}
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-6px);
+    background: #333331;
+  }
+  .card:hover .mark {
+    transform: translateY(-4px) rotate(-6deg);
+  }
+}
+
+.mark {
+  display: block;
+  height: 0.5em;
+  font-family: var(--display);
+  font-size: 5.5rem;
+  font-weight: 800;
+  line-height: 0.9;
+  color: var(--yellow);
+  transition: transform 300ms var(--ease);
 }
 
 .quote {
@@ -50,8 +73,25 @@
 }
 
 .author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid #ffffff1f;
+}
+
+.avatar {
   display: grid;
-  gap: 2px;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--black);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.25rem;
 }
 
 .name {
